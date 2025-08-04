@@ -1,0 +1,710 @@
+Attribute VB_Name = "SP52800B"
+Option Explicit
+
+Public GWS As DAO.Workspace
+Public Const Gc_strExeFile = "SP52800.exe"
+Public GsNeuerArtikel As String
+Public Const TEXT_BREITE = 4700 'Breite des Eingabefeldes frmSP52810.txt1(0)
+Public GlngArbeitsplatz As Long
+Public GintBelegArt As Integer '0=Rechnung, 1=Gutschrift
+Public frmRechnung As Form
+Public frmGutschrift As Form
+Public frmRechnungErf As Form
+Public frmGutschriftErf As Form
+Public frmRechnungFakt As Form
+Public frmGutschriftFakt As Form
+
+'** List & Label *********
+Private glRet As Long
+Private glDummy As Long
+'*************************
+
+Public Sub SpeditionsBuch(BelegID As Long, PrivBelegArt As Integer)
+  Dim rsH As DAO.Recordset
+  Dim rsF As DAO.Recordset
+  Dim rs As DAO.Recordset
+  Dim SQL As String
+  Dim WrgSchl As String
+  Dim BelegArt As String
+  Dim ErfNr As Variant
+  
+  Set rsH = GDB.OpenRecordset("SELECT * FROM [2800_Haupt] WHERE BelegID = " & BelegID & " AND Art = " & PrivBelegArt, dbOpenSnapshot)
+  If rsH.RecordCount > 0 Then
+    If Not IsNull(rsH!Datum) Then
+      
+      If PrivBelegArt = 0 Then
+        BelegArt = "AR"
+      Else
+        BelegArt = "AG"
+      End If
+      'Beträge
+      SQL = "SELECT Sum(IIf([Steuer]=1,([Menge]*[EPreis]/IIf([Einheit]='%',100,1))-([Menge]*[EPreis]/IIf([Einheit]='%',100,1)*[Rabatt]/100),0)) AS SteuerPfl, "
+      SQL = SQL & "Sum(IIf([Steuer]=0,([Menge]*[EPreis]/IIf([Einheit]='%',100,1))-([Menge]*[EPreis]/IIf([Einheit]='%',100,1)*[Rabatt]/100),0)) AS SteuerFr "
+      SQL = SQL & "FROM [2800_Folge] WHERE BelegID = " & BelegID
+      SQL = SQL & " HAVING SatzTyp='A' OR SatzTyp='P'"
+      Set rsF = GDB.OpenRecordset(SQL, dbOpenSnapshot)
+      'Währungsschlüßel
+      SQL = "SELECT Schl FROM [1100_Währungen] WHERE MwSt = " & rsH!MwSt & " AND ISO ='" & rsH!Wrg1 & "'"
+      Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+      If rs.RecordCount > 0 Then
+        WrgSchl = rs!Schl
+      Else
+        SQL = "SELECT Schl FROM [1100_Währungen] WHERE ISO ='" & rsH!Wrg1 & "'"
+        Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+        If rs.RecordCount > 0 Then
+          WrgSchl = rs!Schl
+        Else
+          WrgSchl = GmandantRS!EigenWrg
+        End If
+      End If
+      rs.Close
+      
+      SQL = "SELECT * FROM [5800_SpeditionsBuch] WHERE AbfPos = 999000999" 'Damit keine Sätze zurück gegeben werden.
+      Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+      rs.AddNew
+      rs!AbfPos = rsH!AbfPos
+      rs!AbfZus = rsH!AbfZus
+      rs!AbfDat = rsH!Datum
+      If Trim(rsH!ErfNr) <> "" Then rs!ErfNr = rsH!ErfNr
+      rs!BelegArt = BelegArt
+      rs!BelegNr = Trim(left(CStr(rsH!BelegNr), 12))
+      rs!BelegDatum = rsH!BelegDatum
+      If Trim(rsH!MCode) <> "" Then rs!MCode = rsH!MCode
+      If Trim(rsH!KtoKnz) <> "" Then rs!KtoKnz = rsH!KtoKnz
+      If Trim(rsH!KtoNr) <> "" Then rs!KtoNr = rsH!KtoNr
+      If Trim(rsH!UID) <> "" Then rs!UID = rsH!UID
+      If Trim(rsH!Name1) <> "" Then rs!Name = rsH!Name1
+      If Trim(rsH!Lkz) <> "" Then rs!Lkz = rsH!Lkz
+      If Trim(rsH!plz) <> "" Then rs!plz = rsH!plz
+      If Trim(rsH!ort) <> "" Then rs!ort = rsH!ort
+      rs!Bemerkung = "Sonderfaktura"
+      rs!KostenArt = "H"
+      rs!Rückstellung = "0"
+      If Trim(rsH!KostSchl) <> "" Then rs!KoSt = rsH!KostSchl
+      If Trim(rsH!FibuSchl) <> "" Then rs!ErlBer = rsH!FibuSchl
+      rs!Steuer = CStr(rsH!USt)
+      rs!BetragStpfl = rsF!SteuerPfl
+      rs!BetragStfrei = rsF!SteuerFr
+      rs!WrgSchl = WrgSchl
+      If Trim(rsH!Wrg1) <> "" Then rs!Wrg = rsH!Wrg1
+      rs!Druck = "0"
+      rs!SpedBuchListeID = 0
+      rs!RngEingNr = 0
+      rs!ReBuch = "0"
+      rs!ErstVon = "Sonderfaktura"
+      rs!AendVon = "Sonderfaktura"
+      rs.Update
+      
+      
+'******Funktioniert nicht, weil in der 5800_SpeditionsBuch keine leeren Strings gespeichert werden dürfen.
+'      SQL = "INSERT INTO [5800_SpeditionsBuch] " & rsH!AbfPos & ",'" & rsH!AbfZus & "','" & DateValue(rsH!Datum) & "','" & rsH!ErfNr & "','" & BelegArt
+'      SQL = SQL & "','" & rsH!BelegNr & "','" & DateValue(rsH!BelegDatum) & "','" & rsH!MCode & "','" & rsH!KtoKnz & "','" & rsH!KtoNr & "','" & rsH!UID & "','" & rsH!Name1
+'      SQL = SQL & "','" & rsH!Lkz & "','" & rsH!Lkz & "','" & rsH!ort & ",'Sonderfaktura','H','0','" & rsH!KostSchl & "','" & rsH!FiBuSchl & "','" & rsH!Ust
+'      SQL = SQL & "'," & rsF!SteuerPfl & "," & rsF!SteuerFr & ",'" & WrgSchl & "','" & rsH!Wrg1 & "','0',0,0,'0','" & DateValue(Now) & "','SP52800','" & DateValue(Now) & "'"
+'      SQL = SQL & ",'SP52800',0,'0'"
+'
+'      SQL = "INSERT INTO [5800_SpeditionsBuch] (AbfPos,AbfZus,AbfDat,ErfNr,BelegArt)"
+'      SQL = SQL & " VALUES (" & rsH!AbfPos & ",'" & rsH!AbfZus & "','" & DateValue(rsH!Datum) & "','" & rsH!ErfNr & "','" & BelegArt & "')"
+'      GDB.Execute SQL, dbFailOnError
+'******
+
+    End If
+  End If
+End Sub
+
+Public Function NummernKreisWaehlen(NummernKreis As Integer) As Integer
+  'Die Funktion wird benutzt um zu überprüfen, ob für
+  'Lagerrechnungen gesonderer Nummernkreis benutzt werden soll.
+  'Wenn Felder, im Satz 19 (Lager-Rechnungs-Nr), von = 0, aktuell = 0 und bis = 0 sind,
+  'wird der allgemaine Nummernkreis für Rechnungen (Satz 3) benutzt.
+  Dim rs As DAO.Recordset
+  Dim SQL As String
+ 
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  NummernKreisWaehlen = NummernKreis
+  
+  SQL = "SELECT Nr FROM [1100_NummernKreise] WHERE von = 0 AND aktuell = 0 AND bis = 0 AND Nr = " & NummernKreis
+  Set rs = GDB.OpenRecordset(SQL, dbOpenSnapshot)
+  If rs.RecordCount > 0 Then
+    NummernKreisWaehlen = NummernKreis - 5
+  End If
+ 
+ '***Beginn
+        Exit Function
+Fehler:
+        Call FehlerErklärung("SP52800B", "NummernKreisWaehlen")
+ '***Ende
+
+  
+End Function
+
+'***********************************************************************************
+'Routine:           NummernKreis
+'
+'Autor:             mtrdy@native.cz, 29.11.2001
+'Beschreibung:      liest den Wert aus 1100_NummernKreise
+'Parameter:         Nr
+'                   InNewWorkspace - wenn TRUE, neu Workspace benutzt ist
+'
+'Änderungen:
+'***********************************************************************************
+Public Function NummernKreis(nr As Long, Optional InNewWorkspace As Boolean = False, Optional StandardFehlerMeldung As Boolean = True) As Long
+ On Error GoTo Error
+
+        Dim WS As DAO.Workspace
+        Dim rs As DAO.Recordset
+        Dim ErrorCount As Long
+        Dim TempKeyValue As Long
+        Dim NewKeyValue As Long
+        Dim bCloseWs As Boolean
+        Dim db As DAO.Database
+    
+     If InNewWorkspace Then
+         With DBEngine(0)
+             Set WS = DBEngine.CreateWorkspace("NummernKreis", .UserName, "", .Type)
+             Set db = WS.OpenDatabase(GDB.Name)
+         End With
+         bCloseWs = True
+     Else
+         Set WS = DBEngine(0)
+         Set db = GDB
+         bCloseWs = False
+     End If
+    
+     DBEngine.SetOption dbLockDelay, 90 + Rnd * 60
+     DBEngine.Idle dbRefreshCache
+
+On Error GoTo ErrorSh:
+    
+     Set rs = db.OpenRecordset("SELECT * FROM 1100_NummernKreise WHERE Nr = " & CStr(nr), dbOpenDynaset, dbSeeChanges)
+     rs.LockEdits = True
+     WS.BeginTrans
+    
+     rs.Edit
+    
+     TempKeyValue = rs!aktuell
+     NewKeyValue = TempKeyValue + 1
+    
+     If NewKeyValue > rs!bis Then
+         NewKeyValue = rs!von
+     End If
+    
+     rs!aktuell = NewKeyValue
+     rs!AendVon = GsUser
+     rs!AendDat = Now()
+    
+     rs.Update
+     WS.CommitTrans 'dbForceOSFlush Funktioniert nur, wenn die DB auf dem Rechner mit MS-Betriebsystem gespeichert ist.
+     If bCloseWs Then
+         WS.Close
+     End If
+    
+     NummernKreis = TempKeyValue
+     Exit Function
+    
+ErrorSh:
+    If IsLockError(Err.Number) Then
+         ErrorCount = ErrorCount + 1
+         If ErrorCount > 1 Then
+             'Nach dem 2 Versuch die Routine verlassen.
+             NummernKreis = -1
+             WS.Rollback
+             On Error GoTo Error
+         End If
+    Else
+        On Error GoTo Error
+    End If
+     
+     Resume
+
+
+     Exit Function
+Error:
+     NummernKreis = -1
+     If StandardFehlerMeldung Then
+       If Not IsLockError(Err.Number) Then
+         Call FehlerErklärung("SP52800B", "NummernKreis")
+       End If
+     End If
+
+End Function
+
+'Änderungen:
+'  mtrdy@native.cz 05.04.02 *****
+'     - removed error handling - it was clearing Err
+Public Function IsLockError(lErr As Long) As Boolean
+1          Select Case lErr
+               Case 3008, 3009, 3188, 3189, 3211, 3260, 3261, 3262, 3218
+2                  IsLockError = True
+3              Case Else
+4                  IsLockError = False
+5          End Select
+End Function
+
+Public Function LLPrintListe(frm As Form, LL1 As ListLabel.ListLabel, BelegID As Long, Mode As Integer, Optional tmp As Boolean, Optional Save As Boolean) As Long
+  'Mode = 2 -> Vorschau
+  'Mode < 2 -> Druck
+  'Tmp = True -> Der Schalter wird nur bei der Vorschau noch nicht gedruckter Belege gesetzt.
+  'Die Rechnungsdaten wurden zuvor in Tmp Tabellen gespeichert.
+  'Save = True -> LL-Datei wird gesichert.
+  'Die Option wird genutzt um die Belege zu archivieren. (Im 2-ten Durchlauf nachdem die Belege gedruckt worden.)
+  
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim Formular As String
+  Dim i As Integer
+  Dim Msg As Boolean
+  Dim rs As DAO.Recordset
+  Dim RS1 As DAO.Recordset
+  Dim ZwSumme As Double
+  
+  Dim SteuerPfl As Double
+  Dim SteuerFr As Double
+  Dim USt As Double
+  Dim Betrag As Double
+  Dim SteuerPflWrg As Double
+  Dim SteuerFrWrg As Double
+  Dim UStWrg As Double
+  Dim BetragWrg As Double
+  Dim Kurs As Double
+  
+  Dim SQL As String
+  Dim BelegArt As Integer
+  Dim BelegDatum As Variant
+  Dim Waehrung As String
+  Dim Skonto As Single
+  Dim SkontoTage As Integer
+  Dim NettoTage As Integer
+  Dim MwSt As Single
+  
+  Dim Seite As Long
+  
+  Dim TmpZusatz As String
+  If tmp Then
+    TmpZusatz = "Tmp"
+  End If
+  
+  Set rs = GDB.OpenRecordset("SELECT * FROM [2800_Haupt" & TmpZusatz & "] WHERE BelegID = " & BelegID, dbOpenSnapshot)
+ 
+  If rs.RecordCount > 0 Then
+    LL1.LlDefineVariableStart 'Variablenpuffer löschen.
+    LL1.LlDefineFieldStart 'Variablenpuffer löschen.
+    
+    Call LLGestaltungFormular(LL1, rs!Art + 1)
+    Call LLDefineVariablen(LL1, rs, "Kd_")
+    Call LLDefineFelder(LL1, rs, "Kd_")
+    
+    BelegArt = rs!Art
+    BelegDatum = rs!BelegDatum
+    Waehrung = rs!Wrg1
+    Skonto = rs!ZSkto
+    SkontoTage = rs!ZSktoTage
+    NettoTage = rs!ZTage
+    MwSt = rs!MwSt
+    Kurs = rs!Kurs
+    rs.Close
+        
+    'Folge-Recordset
+    Set rs = GDB.OpenRecordset("SELECT * FROM [2800_Folge" & TmpZusatz & "] WHERE BelegID = " & BelegID & " ORDER BY Nr", dbOpenSnapshot)
+    
+    If rs.RecordCount > 0 Then
+      Seite = 1
+      Call LLDefineVariablen(LL1, rs, "Re_")
+      LL1.LlDefineVariableExt "Seite", Seite, LL_NUMERIC
+      LL1.LlDefineFieldExt "LetzteSeite", 0, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_ZwSumme", 0, LL_NUMERIC
+      LL1.LlDefineFieldExt "ZahlungsZiel", "", LL_TEXT
+     
+      'Betrag für ZahlungsZiel
+      SQL = "SELECT Sum(IIf([Steuer]=1,([Menge]*[EPreis]/IIf([Einheit]='%',100,1))-([Menge]*[EPreis]/IIf([Einheit]='%',100,1)*[Rabatt]/100),0)) AS SteuerPfl, "
+      SQL = SQL & "Sum(IIf([Steuer]=0,([Menge]*[EPreis]/IIf([Einheit]='%',100,1))-([Menge]*[EPreis]/IIf([Einheit]='%',100,1)*[Rabatt]/100),0)) AS SteuerFr "
+      SQL = SQL & "FROM [2800_Folge" & TmpZusatz & "] WHERE BelegID = " & BelegID
+      SQL = SQL & " HAVING SatzTyp='A' OR SatzTyp='P'"
+      Set RS1 = GDB.OpenRecordset(SQL, dbOpenSnapshot)
+      
+      SteuerPfl = Runden(RS1!SteuerPfl, 2)
+      SteuerFr = Runden(RS1!SteuerFr, 2)
+      USt = Runden((SteuerPfl * MwSt / 100), 2)
+      Betrag = SteuerPfl + USt + SteuerFr
+      
+      SteuerPflWrg = Runden(SteuerPfl * Kurs, 2)
+      SteuerFrWrg = Runden(SteuerFr * Kurs, 2)
+      UStWrg = Runden(USt * Kurs, 2)
+      BetragWrg = SteuerPflWrg + UStWrg + SteuerFrWrg
+      
+      LL1.LlDefineFieldExt "Re_SummeSteuerPfl", SteuerPfl, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_SummeSteuerFr", SteuerFr, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_USt", USt, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_Betrag", Betrag, LL_NUMERIC
+      
+      LL1.LlDefineFieldExt "Re_SummeSteuerPflWrg", SteuerPflWrg, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_SummeSteuerFrWrg", SteuerFrWrg, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_UStWrg", UStWrg, LL_NUMERIC
+      LL1.LlDefineFieldExt "Re_BetragWrg", BetragWrg, LL_NUMERIC
+      
+      'Soll Spalte Rabatt sichtbar sein?
+      SQL = "SELECT Max([Rabatt]) AS MaxRabatt "
+      SQL = SQL & "FROM [2800_Folge" & TmpZusatz & "] WHERE BelegID = " & BelegID
+      Set RS1 = GDB.OpenRecordset(SQL, dbOpenSnapshot)
+      LL1.LlDefineFieldExt "RabattVisible", RS1!MaxRabatt, LL_NUMERIC
+
+    Else
+      Msg = True
+    End If
+  Else
+    Msg = True
+  End If
+  
+  If Msg = False Then
+    Formular = FormularPfad("SP52800.lst")
+    
+    'Logik aus 55710 um Belege zu archivieren -> Schleife 2 mal: 1 Vorschau mit LL_PRINT_STORAGE (Datei ins Archiv kopieren), 2 Drucken.
+    'glRet = LL1.LlPrintWithBoxStart(LL_PROJECT_LIST, Formular, LL_PRINT_STORAGE, LL_BOXTYPE_BRIDGEMETER, frm.hwnd, "printing list")
+    'ArbeitsplatzPfad
+    If Mode < 2 Then 'Druck
+      glRet = LL1.LlPrintWithBoxStart(LL_PROJECT_LIST, Formular, LL_PRINT_NORMAL, LL_BOXTYPE_BRIDGEMETER, frm.hwnd, "printing list")
+    Else 'Vorschau
+      If Save Then
+        glRet = LL1.LlPrintStart(LL_PROJECT_LIST, Formular, LL_PRINT_PREVIEW)
+      Else
+        glRet = LL1.LlPrintWithBoxStart(LL_PROJECT_LIST, Formular, LL_PRINT_PREVIEW, LL_BOXTYPE_BRIDGEMETER, frm.hwnd, "printing list to preview")
+      End If
+    End If
+    
+    If glRet < 0 Then
+      GoTo Fehler
+    End If
+    If CBool(GetSetting("SP50000", "SP52800", "SP52830DruckerDialog", "-1")) = True Then 'Druckdialog
+      If Not Save Then glRet = LL1.LlPrintOptionsDialog(frm.hwnd, "Drucker")
+    End If
+    
+    If glRet = LL_ERR_USER_ABORTED Then Exit Function
+    
+    Screen.MousePointer = 11
+    'Variablen drucken
+    LL1.LlPrint
+    
+  
+    'Solange das Ende der Posten-Tabelle nicht erreicht ist...
+'    LL1.LlDefineVariableExt "Seite", Seite, LL_NUMERIC
+'    LL1.LlDefineFieldExt "LetzteSeite", 0, LL_NUMERIC
+    While Not rs.EOF
+      DoEvents
+      'Prozentbalken setzen
+      glRet = LL1.LlPrintSetBoxText("Drucken", rs.PercentPosition)
+      'Datensatzfelder der Liste bekanntmachen.
+      If Trim(rs!Einheit) = "%" Then
+        ZwSumme = ZwSumme + Runden((rs!Menge / 100 * rs!Epreis - rs!Menge * rs!Epreis * rs!Rabatt / 100), 2)
+      Else
+        ZwSumme = ZwSumme + Runden((rs!Menge * rs!Epreis - rs!Menge * rs!Epreis * rs!Rabatt / 100), 2)
+      End If
+      LL1.LlDefineFieldExt "Re_ZwSumme", ZwSumme, LL_NUMERIC
+      Call LLDefineFelder(LL1, rs, "Re_")
+      
+      'Seitenumbruch
+      If rs!SatzTyp = "S" Then
+        Seite = Seite + 1
+        LL1.LlDefineVariableExt "Seite", Seite, LL_NUMERIC
+        glRet = LL1.LlPrint
+      End If
+      
+      'Felder drucken und wenn Seitenumbruch erfolgt ist,
+      'Variablen und Felder erneut drucken
+      While LL1.LlPrintFields = LL_WRN_REPEAT_DATA
+        Seite = Seite + 1
+        LL1.LlDefineVariableExt "Seite", Seite, LL_NUMERIC
+        glRet = LL1.LlPrint
+      Wend
+      If rs!SatzTyp = "Z" Then ZwSumme = 0
+      rs.MoveNext
+    Wend
+    LL1.LlDefineFieldExt "LetzteSeite", 1, LL_NUMERIC
+    
+    If BelegArt = 0 Then 'Nur bei Rechnungen
+      LL1.LlDefineFieldExt "ZahlungsZiel", ZahlungsZiel(BelegDatum, Betrag, Waehrung, Skonto, SkontoTage, NettoTage), LL_TEXT
+    End If
+    
+    'Tabellen-Ausdruck beenden
+    Do
+      glRet = LL1.LlPrintFieldsEnd()
+    Loop Until glRet <> LL_WRN_REPEAT_DATA
+ 
+    'Wenn der Benutzer abbricht
+    If glRet = LL_ERR_USER_ABORTED Then
+      LL1.LlPrintEnd (0)
+      Exit Function
+    End If
+      
+    'Druck beenden
+    glRet = LL1.LlPrintEnd(0)
+   
+    'Beim Preview-Druck Preview anzeigen und dann Preview-Datei (.LL) löschen
+    If Mode = 2 Then 'PrintMode = LL_PRINT_PREVIEW
+      'glRet = LL1.LlPreviewDisplay(Formular, "", frm.hwnd)
+      'glRet = LL1.LlPreviewDeleteFiles(Formular, "")
+      If Save Then
+        If BelegArt = 0 Then
+          Archivieren "SFR"
+        Else
+          Archivieren "SFG"
+        End If
+      Else
+        glRet = LL1.LlPreviewDisplay(ArbeitsplatzPfad & "\SP52800.LL", "", frm.hwnd)
+      End If
+      glRet = LL1.LlPreviewDeleteFiles(ArbeitsplatzPfad & "\SP52800.LL", "")
+    End If
+    
+    rs.MoveFirst
+    Screen.MousePointer = 0
+  End If
+
+        '***Beginn
+        Exit Function
+Fehler:
+        rs.MoveLast
+        If glRet <> 0 Then
+          Call FehlerErklärung("SP52800B", "LLPrintListe LL-Fehler: " & glRet)
+        Else
+          Call FehlerErklärung("SP52800B", "LLPrintListe")
+        End If
+        'Beim Drucken ist ein fehler aufgeteten.
+        'Die Änderungen in der DB müssen rückgängig gemacht werden.
+        'evtl. RollBack
+        glRet = LL_ERR_USER_ABORTED '-99
+        '***Ende
+End Function
+
+
+
+
+Public Sub Main()
+  Dim ProgrammNr As String
+        
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  
+  GsAnwenderNr = GetSetting("SP50000", "Settings", "AnwnderNr", "")
+  GsTitel = GetSetting("SP50000", "Settings", "Titel", "")
+  GdtDatum = GetSetting("SP50000", "Settings", "ArbeitsDatum", Date)
+  GsUser = GetSetting("SP50000", "Settings", "User", "")
+  GlngArbeitsplatz = CLng(GetSetting("SP50000", "Settings", "Arbeitsplatz", "0"))
+  
+  'GsAnwenderNr = "997"
+  'GsTitel = "Test"
+  
+  'Das Programm wird gestartet nur dann, wenn SP50000 aktiv ist.
+  If GsTitel <> "" Then
+    GsHauptPfad = PfadZrck(App.Path)
+    Call DesignerFrei 'Designer freischalten?
+
+    ProgrammNr = GetSetting("SP50000", "Settings", "StartProgrammNr")
+    'ProgrammNr = "286"
+    
+    If GsSprache = "" Then Sprache
+    
+    If GDB Is Nothing Then
+      Set GWS = DBEngine.CreateWorkspace("GWS", "Admin", "")
+      Set GDB = GWS.OpenDatabase(GsHauptPfad & "dat\" & CStr(CInt(GsAnwenderNr)) & "\SP50000.dat")
+    End If
+    
+    If GDBlog Is Nothing Then
+      Set GDBlog = DBEngine.OpenDatabase(GsHauptPfad & "log\SP51000.log")
+    End If
+    
+    If GDBprm Is Nothing Then
+      Set GDBprm = DBEngine.OpenDatabase(GsHauptPfad & "prm\SP500DE.prm")
+    End If
+    
+    'Mandantendatensatz
+    If GmandantRS Is Nothing Then
+      Set GmandantRS = GDB.OpenRecordset("1100_Mandant", dbOpenSnapshot)
+    End If
+    
+    Select Case ProgrammNr
+    Case "281" 'Textstamm
+      frmSP52810.Show
+    Case "282" 'Artikelstamm
+      frmSP52820.Show
+    Case "283" 'Sonderfaktura-Rechnung
+      GintBelegArt = 0
+      Set frmRechnung = New frmSP52830
+      frmRechnung.Show
+    Case "284" 'Sonderfaktura-Gutschrift
+      GintBelegArt = 1
+      Set frmGutschrift = New frmSP52830
+      frmGutschrift.Show
+    Case "285" 'Sammeldruck-Rechnung
+      GintBelegArt = 0
+      Set frmRechnungFakt = New frmSP52850
+      frmRechnungFakt.Show
+    Case "286" 'Sammeldruck-Gutschrift
+      GintBelegArt = 1
+      Set frmGutschriftFakt = New frmSP52850
+      frmGutschriftFakt.Show
+    End Select
+  Else
+    End
+  End If
+
+        Exit Sub
+Fehler:
+  Select Case Err.Number
+  Case 401 'Ungebundenes Formular kann nicht angezeigt werden, während modales Formular angezeigt wird
+    MsgBox "Gleichzeitige Rechnungs- und Gutschrift-Erfassung ist nicht möglich.", vbInformation
+    If ProgrammNr = "283" Then
+      Set frmRechnung = Nothing
+    Else
+      Set frmGutschrift = Nothing
+    End If
+  Case Else
+    Call FehlerErklärung("SP52800B", "Main")
+  End Select
+End Sub
+
+Public Function ZahlungsZiel(ByVal BelegDatum As Variant, ByVal Betrag As Double, ByVal Waehrung As String, ByVal Skonto As Single, ByVal SkontoTage As Integer, ByVal NettoTage As Integer) As String
+  Dim RechnBetrag As String
+  
+  If Not IsDate(BelegDatum) Then BelegDatum = GdtDatum
+  If NettoTage = 0 Then
+    ZahlungsZiel = "Zahlbar sofort ohne Abzug."
+  Else
+    If Skonto > 0 Then
+      RechnBetrag = Format(Betrag * (100 - Skonto) / 100, "#########0.00")
+      Select Case NettoTage - SkontoTage
+      Case Is = 0
+        ZahlungsZiel = "Bei Zahlungen bis zum " & CDate(BelegDatum) + SkontoTage & " kann der Gesamtbetrag um " & Skonto & "% gekürzt werden auf " & Waehrung & " " & RechnBetrag
+      Case Is > 0
+        ZahlungsZiel = "Bei Zahlungen bis zum " & CDate(BelegDatum) + SkontoTage & " kann der Gesamtbetrag um " & Skonto & "% gekürzt werden auf " & Waehrung & " " & RechnBetrag
+        ZahlungsZiel = ZahlungsZiel & vbCrLf & "oder Zahlbar bis zum " & CDate(BelegDatum) + NettoTage & " netto."
+      Case Is < 0
+        ZahlungsZiel = "Zahlbar bis zum " & CDate(BelegDatum) + NettoTage
+      End Select
+    Else
+      ZahlungsZiel = "Zahlung bis zum " & CDate(BelegDatum) + NettoTage & " netto."
+    End If
+  End If
+End Function
+
+
+
+Public Sub LLDesigner(frm As Form, LL1 As ListLabel.ListLabel, BelegID As Long, Index As Integer, Optional tmp As Boolean)
+  'Index = 0 Alle Mandanten; Index = 1 Aktueller Mandant
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim Formular As String
+  Dim rs As DAO.Recordset
+  Dim Msg As Boolean
+  Dim Ret As Long
+  Dim TmpZusatz As String
+  
+  If tmp Then
+    TmpZusatz = "Tmp"
+  End If
+    
+  Set rs = GDB.OpenRecordset("SELECT * FROM [2800_Haupt" & TmpZusatz & "] WHERE BelegID = " & BelegID, dbOpenSnapshot)
+
+  If rs.RecordCount > 0 Then
+    LL1.LlDefineVariableStart 'Variablenpuffer löschen.
+    LL1.LlDefineFieldStart 'Variablenpuffer löschen.
+    Formular = "SP52800.lst"
+    Call LLGestaltungFormular(LL1, 1)
+    Call LLDefineVariablen(LL1, rs, "Kd_")
+    Call LLDefineFelder(LL1, rs, "Kd_")
+    LL1.LlDefineFieldExt "ZahlungsZiel", "Bei Zahlung bis...", LL_TEXT
+    LL1.LlDefineFieldExt "RabattVisible", 1, LL_NUMERIC
+    LL1.LlDefineVariableExt "Seite", 1, LL_NUMERIC
+    LL1.LlDefineFieldExt "LetzteSeite", 1, LL_NUMERIC
+    
+    LL1.LlDefineFieldExt "Re_SummeSteuerPfl", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_SummeSteuerFr", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_USt", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_Betrag", 0, LL_NUMERIC
+    
+    LL1.LlDefineFieldExt "Re_SummeSteuerPflWrg", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_SummeSteuerFrWrg", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_UStWrg", 0, LL_NUMERIC
+    LL1.LlDefineFieldExt "Re_BetragWrg", 0, LL_NUMERIC
+    
+    'Folge-Recordset
+    Set rs = GDB.OpenRecordset("SELECT * FROM [2800_Folge" & TmpZusatz & "] WHERE BelegID = " & BelegID & " ORDER BY Nr", dbOpenSnapshot)
+    
+    If rs.RecordCount > 0 Then
+      'Call LLDefineVariablen(LL1, RS, "Re_")
+      Call LLDefineFelder(LL1, rs, "Re_")
+      LL1.LlDefineFieldExt "Re_ZwSumme", 0, LL_NUMERIC
+
+      'Designer starten
+      glRet = LL1.LlDefineLayout(frm.hwnd, "Liste", OBJECT_LIST, FormularBearbeiten(Formular, Index))
+    Else
+      Msg = True
+    End If
+  Else
+    Msg = True
+  End If
+  
+  If Msg Then
+    Call MsgText(1, 23, 0, 0, 0)
+    MsgBox GsMsgText(0), vbOKOnly + vbInformation
+    'MsgBox "Es stehen noch keine Datensätze zu Verfügung.", vbInformation
+  End If
+        
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("SP52800B", "LLDesigner")
+        '***Ende
+
+End Sub
+
+Public Function IstBelegNrFrei(BelegNr As Long, BelegID As Long, Art As Integer) As Boolean
+  Dim SQL As String
+  Dim rs As DAO.Recordset
+  
+  If BelegNr = 0 Then
+    IstBelegNrFrei = True
+  Else
+    SQL = "SELECT BelegNr FROM [2800_Haupt] WHERE [Storno] = '0' AND [ZwAblage] = 0 AND [BelegNr] = " & BelegNr & "  AND [BelegID] <> " & BelegID & "  AND [Art] = " & Art
+    Set rs = GDB.OpenRecordset(SQL, dbOpenSnapshot)
+    If rs.RecordCount = 0 Then IstBelegNrFrei = True
+    rs.Close
+  End If
+  
+End Function
+
+
+
+Public Sub Archivieren(Optional Preifix As String)
+  Dim SHFO As SHFILEOPSTRUCT
+  Dim Erfolg As Long
+  Dim ZielDatei As String
+  Dim i As Integer
+  
+  If FileExists(ArbeitsplatzPfad & "\SP52800.LL") Then
+    
+    For i = 1 To 10000
+      ZielDatei = GsHauptPfad & "dat\" & CStr(CInt(GsAnwenderNr)) & "\LL\" & Preifix & Format(GdtDatum, "dd.mm.yy") & "_" & i & ".LL"
+      If Not FileExists(ZielDatei) Then Exit For
+    Next i
+    
+    'Funktion in Explorer.bas definiert
+    With SHFO
+      .wFunc = FO_COPY
+      .pFrom = ArbeitsplatzPfad & "\SP52800.LL" & vbNullChar & vbNullChar
+      .pTo = ZielDatei & vbNullChar & vbNullChar
+      .fFlags = FOF_NOCONFIRMATION Or FOF_NOCONFIRMMKDIR
+    End With
+    Erfolg = SHFileOperation(SHFO)
+    
+    'SHFileOperation-Aufruf war erfolgreich.
+    If Erfolg <> 0 Then
+      MsgBox "Der aktuelle Beleg konnte nicht archiviert werden. Bitte überprüfen Sie das Betriebsystem.", vbExclamation
+    End If
+  End If
+
+End Sub

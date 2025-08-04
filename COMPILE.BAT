@@ -1,0 +1,2 @@
+"C:\Programme\Microsoft Visual Studio\VB98\VB6.EXE"  /M "J:\prog\SP62\SP50_PROJEKTE_WORKSPACE\SP52800_SonderFaktura_SQL\SP52800.vbp" /out "J:\prog\SP62\SP50_PROJEKTE_WORKSPACE\SP52800_SonderFaktura_SQL\SP62800.EXE"
+@Pause

@@ -1,0 +1,1232 @@
+VERSION 5.00
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "threed32.ocx"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
+Begin VB.Form frmSP52820 
+   BackColor       =   &H80000000&
+   Caption         =   "Artikel-Stamm"
+   ClientHeight    =   5700
+   ClientLeft      =   750
+   ClientTop       =   3285
+   ClientWidth     =   9300
+   Icon            =   "frmSP52820.frx":0000
+   KeyPreview      =   -1  'True
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   5700
+   ScaleWidth      =   9300
+   ShowInTaskbar   =   0   'False
+   Tag             =   "1"
+   Begin VB.Frame Frame1 
+      Caption         =   "Text"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1575
+      Index           =   1
+      Left            =   60
+      TabIndex        =   32
+      Top             =   3330
+      Width           =   9135
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   1140
+         Index           =   11
+         Left            =   120
+         Locked          =   -1  'True
+         MultiLine       =   -1  'True
+         TabIndex        =   12
+         Top             =   270
+         Width           =   8865
+      End
+   End
+   Begin VB.Frame Frame1 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   3165
+      Index           =   0
+      Left            =   60
+      TabIndex        =   21
+      Top             =   60
+      Width           =   9135
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   10
+         Left            =   3030
+         Picture         =   "frmSP52820.frx":030A
+         Style           =   1  'Grafisch
+         TabIndex        =   36
+         TabStop         =   0   'False
+         Top             =   2580
+         Width           =   210
+      End
+      Begin VB.CheckBox Check1 
+         Alignment       =   1  'Rechts ausgerichtet
+         Caption         =   "Steuer"
+         Height          =   255
+         Index           =   0
+         Left            =   90
+         TabIndex        =   11
+         Top             =   2790
+         Width           =   1635
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   10
+         Left            =   1530
+         TabIndex        =   10
+         Top             =   2580
+         Width           =   1485
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   1
+         Left            =   1530
+         TabIndex        =   1
+         Top             =   420
+         Width           =   7215
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   9
+         Left            =   1530
+         TabIndex        =   9
+         Top             =   2340
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   8
+         Left            =   1530
+         TabIndex        =   8
+         Top             =   2100
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   7
+         Left            =   1530
+         TabIndex        =   7
+         Top             =   1860
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   6
+         Left            =   1530
+         TabIndex        =   6
+         Top             =   1620
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   5
+         Left            =   1530
+         TabIndex        =   5
+         Top             =   1380
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   4
+         Left            =   1530
+         TabIndex        =   4
+         Top             =   1140
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   3
+         Left            =   1530
+         TabIndex        =   3
+         Top             =   900
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   2
+         Left            =   1530
+         TabIndex        =   2
+         Top             =   660
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   0
+         Left            =   1530
+         TabIndex        =   0
+         Top             =   180
+         Width           =   1455
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   0
+         Left            =   2970
+         Picture         =   "frmSP52820.frx":03EC
+         Style           =   1  'Grafisch
+         TabIndex        =   22
+         TabStop         =   0   'False
+         Top             =   180
+         Width           =   210
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Textschlüßel"
+         Height          =   210
+         Index           =   10
+         Left            =   90
+         TabIndex        =   35
+         Top             =   2550
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "FiBu-Konto"
+         Height          =   210
+         Index           =   9
+         Left            =   90
+         TabIndex        =   34
+         Top             =   2310
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Bez"
+         Height          =   210
+         Index           =   1
+         Left            =   90
+         TabIndex        =   31
+         Top             =   420
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kostenst.-Konto"
+         Height          =   255
+         Index           =   8
+         Left            =   90
+         TabIndex        =   30
+         Top             =   2070
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "FiBu-Schl"
+         Height          =   255
+         Index           =   7
+         Left            =   90
+         TabIndex        =   29
+         Top             =   1830
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kostenst.-Schl"
+         Height          =   255
+         Index           =   6
+         Left            =   90
+         TabIndex        =   28
+         Top             =   1590
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Rabatt"
+         Height          =   255
+         Index           =   5
+         Left            =   90
+         TabIndex        =   27
+         Top             =   1380
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Preis"
+         Height          =   210
+         Index           =   4
+         Left            =   90
+         TabIndex        =   26
+         Top             =   1140
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Einheit"
+         Height          =   210
+         Index           =   3
+         Left            =   90
+         TabIndex        =   25
+         Top             =   900
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Menge"
+         Height          =   210
+         Index           =   2
+         Left            =   90
+         TabIndex        =   24
+         Top             =   660
+         Width           =   1425
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Suchbegriff"
+         Height          =   210
+         Index           =   0
+         Left            =   90
+         TabIndex        =   23
+         Top             =   180
+         Width           =   1425
+      End
+   End
+   Begin Threed.SSPanel SSPanel1 
+      Height          =   360
+      Index           =   0
+      Left            =   0
+      TabIndex        =   20
+      Top             =   5010
+      Width           =   9300
+      _Version        =   65536
+      _ExtentX        =   16404
+      _ExtentY        =   635
+      _StockProps     =   15
+      BackColor       =   -2147483633
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Schließen"
+         CausesValidation=   0   'False
+         Height          =   300
+         Index           =   6
+         Left            =   7980
+         TabIndex        =   19
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Drucken"
+         Height          =   300
+         Index           =   5
+         Left            =   6660
+         TabIndex        =   18
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "cmd1"
+         Height          =   300
+         Index           =   4
+         Left            =   5340
+         TabIndex        =   17
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Kopieren"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   3
+         Left            =   4020
+         TabIndex        =   16
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Speichern"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   2
+         Left            =   2700
+         TabIndex        =   15
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Löschen"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   1
+         Left            =   1380
+         TabIndex        =   14
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Neu"
+         CausesValidation=   0   'False
+         Height          =   300
+         Index           =   0
+         Left            =   60
+         TabIndex        =   13
+         Top             =   30
+         Width           =   1260
+      End
+   End
+   Begin ComctlLib.StatusBar sta1 
+      Align           =   2  'Unten ausrichten
+      Height          =   330
+      Left            =   0
+      TabIndex        =   33
+      Top             =   5370
+      Width           =   9300
+      _ExtentX        =   16404
+      _ExtentY        =   582
+      SimpleText      =   ""
+      _Version        =   327682
+      BeginProperty Panels {0713E89E-850A-101B-AFC0-4210102A8DA7} 
+         NumPanels       =   3
+         BeginProperty Panel1 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            Object.Width           =   1376
+            MinWidth        =   1376
+            Key             =   ""
+            Object.Tag             =   ""
+         EndProperty
+         BeginProperty Panel2 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            Object.Width           =   1376
+            MinWidth        =   1376
+            Key             =   ""
+            Object.Tag             =   ""
+         EndProperty
+         BeginProperty Panel3 {0713E89F-850A-101B-AFC0-4210102A8DA7} 
+            AutoSize        =   1
+            Object.Width           =   13097
+            MinWidth        =   12541
+            Key             =   ""
+            Object.Tag             =   ""
+         EndProperty
+      EndProperty
+   End
+   Begin VB.Menu mnuDat 
+      Caption         =   "Datei"
+      Index           =   0
+      Begin VB.Menu mnuDat1 
+         Caption         =   "Schließen"
+         Index           =   0
+      End
+   End
+   Begin VB.Menu mnuBearb 
+      Caption         =   "Bearbeiten"
+      Index           =   0
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Neu"
+         Index           =   0
+      End
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Löschen"
+         Enabled         =   0   'False
+         Index           =   1
+      End
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Speichern"
+         Enabled         =   0   'False
+         Index           =   2
+      End
+   End
+End
+Attribute VB_Name = "frmSP52820"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+  
+  Dim gbDataChanged As Boolean
+  Dim gbSatzNeu As Boolean
+  
+  Dim gRS As DAO.Recordset
+  Dim gvntMerker
+  Dim gbEinfg As Boolean
+  
+  Private objPRM As clsPRM
+  Private objDAusw As SPDAOAusw.clsDAOAuswahl
+  Private objHlp As SpHlp.clsHlp
+  
+  
+
+Private Sub Check1_Click(Index As Integer)
+    If gbDataChanged Then
+      If gRS.EditMode <> dbEditInProgress Then 'dbEditInProgress = 1
+        'Edit-Modus ist noch nicht eingeschaltet.
+        gRS.Edit
+        cmd1(2).Enabled = True
+        mnuBearb1(2).Enabled = True
+      End If
+    End If
+
+End Sub
+
+Private Sub Check1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+  Select Case KeyCode
+  Case vbKeyF1
+    objPRM.FindFirstString = "name = 'Check1' AND index = " & Index
+    If Shift = 1 Then
+      'Die UMSCHALT-TASTE ist gedrückt.
+      'Hilfetexte können erfast oder bearbeitet werden.
+      objHlp.HlpShow HlpWrite, objPRM.HlpID
+    Else
+      objHlp.HlpShow HlpRead, objPRM.HlpID
+    End If
+  Case vbKeyReturn, vbKeyDown
+       Call objPRM.SprungNeu("Vorwärts", Shift, Check1(Index).TabIndex, True)
+  Case vbKeyEscape, vbKeyUp
+      Call objPRM.SprungNeu("Rückwerts", Shift, Check1(Index).TabIndex, True)
+  End Select
+
+End Sub
+
+
+Private Sub cmd1_Click(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim antwort As String
+  
+  Select Case Index
+  Case 0 'Neu
+    If cmd1(2).Enabled Then
+      Call MsgText(1, 18, 0, 0, 0)
+      If MsgBox(GsMsgText(0), vbYesNo + vbExclamation) = vbYes Then
+        'Msgbox "Sie haben die Daten geändert. Wollen Sie die Änderungen speichern?"
+        Call SatzSpeichern
+      End If
+    End If
+    Call MaskeLeeren
+    gbSatzNeu = True
+    txt1(0) = ""
+    txt1(0).SetFocus
+  Case 1 'Löschen
+    Call MsgText(1, 14, 0, 0, 0)
+    antwort = MsgBox(GsMsgText(0), vbYesNo + vbQuestion + vbDefaultButton2)
+    'antwort = MsgBox("Wollen Sie den Datensatz wirklich löschen?", vbYesNo + vbExclamation + vbDefaultButton2)
+    If antwort = vbYes Then
+      If gRS.RecordCount > 1 Then
+        gRS.Delete
+        gRS.MoveNext
+        If gRS.EOF = True Then
+          gRS.MoveLast
+        End If
+        Call SatzZeigen
+      Else
+        gRS.Delete
+        txt1(0) = ""
+        Call MaskeLeeren
+      End If
+    End If
+    txt1(0).SetFocus
+  Case 2 'Speichern
+    Call SatzSpeichern
+  Case 3 'Kopieren
+    If cmd1(2).Enabled Then
+      Call MsgText(1, 18, 0, 0, 0)
+      If MsgBox(GsMsgText(0), vbYesNo + vbExclamation) = vbYes Then
+        'Msgbox "Sie haben die Daten geändert. Wollen Sie die Änderungen speichern?"
+        Call SatzSpeichern
+      End If
+    End If
+    frmSP52821.Show
+  Case 6 'Schließen
+    Unload Me
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "cmd1_Click")
+ '***Ende
+
+End Sub
+
+Private Sub cmdAuswahl_Click(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim ColLeft As Integer
+  Dim RowBottom As Integer
+  Dim OT As String
+  
+  '*****
+  Dim rc As rect
+
+  Call GetWindowRect(txt1(Index).hwnd, rc)
+  ColLeft = rc.left * Screen.TwipsPerPixelX - 70
+  RowBottom = rc.bottom * Screen.TwipsPerPixelY - 340
+  '*****
+  objDAusw.FilterBar = True
+  objDAusw.BorderStyle = 4
+  objDAusw.Caption = lbl1(Index)
+  objDAusw.top = RowBottom
+  objDAusw.left = ColLeft
+  
+  Select Case Index
+  Case 0 'Schl.
+    If cmd1(2).Enabled = True Then
+      'Der aktuelle Datensatz wurde verändert
+      Call MsgText(1, 18, 0, 0, 0)
+      If MsgBox(GsMsgText(0), vbYesNo + vbInformation) = vbYes Then
+      'MsgBox "Sie haben die Daten geändert. Wollen Sie die Änderungen speichern?"
+        Call SatzSpeichern
+      Else
+        Call SatzZeigen
+        cmd1(2).Enabled = False
+        mnuBearb1(2).Enabled = False
+      End If
+    End If
+    objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+    objDAusw.ColParameter 1, ColWidth, 2300
+    objDAusw.ColParameter 0, ColCaption, lbl1(0)
+    objDAusw.ColParameter 1, ColCaption, lbl1(1)
+    'Datensatz positionieren.
+    If Trim(txt1(Index)) <> "" Then
+      objDAusw.FindFirst ("Schl like '" & txt1(Index) & "%'")
+    End If
+    
+    objDAusw.RSOpen "SELECT Schl, Bez FROM [2800_Artikel] ORDER BY Schl"
+    If objDAusw.Abbruch = False Then
+      txt1(Index) = objDAusw.FieldText(0)
+      gRS.FindFirst "Schl = """ & txt1(Index) & """ "
+      Call SatzZeigen
+      Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+    Else
+      txt1(Index).SetFocus
+    End If
+  Case 10 'Textschl.
+    objDAusw.ColParameter 2, ColVisible, 0
+    'Datensatz positionieren.
+    If Trim(txt1(Index)) <> "" Then
+      objDAusw.FindFirst ("Schl like '" & txt1(Index) & "%'")
+    End If
+    
+    objDAusw.RSOpen "SELECT Schl, Beschr,Inhalt FROM [2800_Texte] ORDER BY Schl"
+    If objDAusw.Abbruch = False Then
+      txt1(Index) = objDAusw.FieldText(0)
+      txt1(Index + 1) = objDAusw.FieldText(2)
+      Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+    Else
+      txt1(Index).SetFocus
+    End If
+  End Select
+
+       
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "cmdAuswahl_Click")
+ '***Ende
+End Sub
+
+
+
+
+
+
+
+
+
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim AltDown
+  Const vbAltMask = 4
+  
+  'Beim clicken auf das Programm-Symbol im Register Aktive Programme (SP51.ProgrammAktivieren)
+  'wird SendKeys "%{F12}", True - Befehl ausgeführt.
+  'Aktuelle form wird zu aktiven Form in normaler Größe.
+  AltDown = (Shift And vbAltMask) > 0
+  If KeyCode = vbKeyF12 Then
+    If AltDown Then
+      Call Main
+    End If
+  End If
+  
+  If Shift = 2 Then
+    GStrg = True
+  End If
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "Form_KeyDown")
+ '***Ende
+End Sub
+
+
+Private Sub Form_Load()
+ '***Beginn
+'On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim x As Control
+  
+  If GsTitel <> "" Then
+    GlSP51000hwnd = FindWindow(vbNullString, GsTitel)
+    SetWindowLong Me.hwnd, GWL_HWNDPARENT, GlSP51000hwnd
+  End If
+  
+  Set objPRM = New clsPRM
+  Set objPRM.gForm = Me
+  objPRM.PRM_Alle
+  
+  
+  Me.left = GetSetting("SP50000", "SP52800", "SP52820Left", "2550")
+  Me.top = GetSetting("SP50000", "SP52800", "SP52820Top", "870")
+  
+  Me.Width = FORM_WIDTH 'Const in SP5000B.bas
+  Me.Height = FORM_HEIGHT
+  
+  If left(Me.Name, 3) = "frm" Then
+    sta1.Panels(1).Text = Mid(Me.Name, 4)
+  Else
+    sta1.Panels(1).Text = Me.Name
+  End If
+  
+  sta1.Panels(2).Text = DisplayVerInfo(GsHauptPfad & Gc_strExeFile)
+  
+  
+  'Me.Show
+  Set gRS = GDB.OpenRecordset("SELECT * FROM [2800_Artikel] ORDER BY [Schl]", dbOpenDynaset)
+
+  Set objDAusw = New SPDAOAusw.clsDAOAuswahl
+  objDAusw.DatabaseName = GsHauptPfad & "dat\" & CStr(CInt(GsAnwenderNr)) & "\SP50000.dat"
+  objDAusw.FilterBar = True
+  
+  
+  Set objHlp = New SpHlp.clsHlp
+  objHlp.DatabaseName = GsHauptPfad & "hlp\SP50000.hlp"
+  objHlp.Table = Me.Name
+  objHlp.Caption = Me.Name & " - Feldhilfe"
+  
+  
+  
+  SaveSetting "SP50000", "SP52800", "SP52820", Me.Caption
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "Form_Load")
+ '***Ende
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+    If cmd1(2).Enabled = True Then
+      'Der aktuelle Datensatz wurde verändert
+      Call MsgText(1, 18, 0, 0, 0)
+      If MsgBox(GsMsgText(0), vbYesNo + vbInformation) = vbYes Then
+      'MsgBox "Sie haben die daten geändert. Wollen Sie die Änderungen speichern?"
+        If Not SatzSpeichern Then
+          Cancel = True
+        End If
+      End If
+    End If
+
+End Sub
+
+Private Sub Form_Resize()
+  sta1.Panels(1).Width = Me.Width / FORM_WIDTH * FORM_PANELS_1
+  sta1.Panels(2).Width = Me.Width / FORM_WIDTH * FORM_PANELS_2
+End Sub
+
+
+Private Sub Form_Unload(Cancel As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  SaveSetting "SP50000", "SP52800", "SP52820Left", Me.left
+  SaveSetting "SP50000", "SP52800", "SP52820Top", Me.top
+  'Unterrutine in SP50000B.bas
+  Call ProgrammAus("282")
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "Form_Unload")
+ '***Ende
+End Sub
+
+Private Sub mnuBearb1_Click(Index As Integer)
+  
+  Call cmd1_Click(Index)
+  
+End Sub
+
+Private Sub mnuDat1_Click(Index As Integer)
+  Call cmd1_Click(6)
+
+End Sub
+
+
+
+
+Private Sub txt1_Change(Index As Integer)
+  
+On Error GoTo Fehler
+  
+  If Index = 0 Then
+    If gbDataChanged Then
+      gvntMerker = txt1(Index)
+      If cmd1(2).Enabled Then
+        Call MsgText(1, 18, 0, 0, 0)
+        If MsgBox(GsMsgText(0), vbYesNo + vbExclamation) = vbYes Then
+          'Msgbox "Sie haben die Daten geändert. Wollen Sie die Änderungen speichern?"
+          Call SatzSpeichern
+        End If
+      End If
+      Call MaskeLeeren
+      txt1(Index) = gvntMerker
+    End If
+  Else
+    If gbDataChanged Then
+      If gRS.EditMode <> dbEditInProgress Then 'dbEditInProgress = 1
+        'Edit-Modus ist noch nicht eingeschaltet.
+        gRS.Edit
+        cmd1(2).Enabled = True
+        mnuBearb1(2).Enabled = True
+      End If
+    End If
+  End If
+        
+        Exit Sub
+Fehler:
+        Select Case Err.Number
+        Case 3260 'Aktualisieren nicht möglich. Der Datensatz ist von anderem Benutzer gesperrt.
+          Call FehlerErklärung("frmSP52820", "txt1_Change")
+          Call SatzZeigen
+        Case Else
+          Call FehlerErklärung("frmSP52820", "txt1_Change")
+        End Select
+End Sub
+
+Private Sub txt1_GotFocus(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  txt1(Index).SelStart = 0
+  txt1(Index).SelLength = Len(txt1(Index))
+  txt1(Index).ForeColor = vbWindowText
+  txt1(Index).BackColor = &HC0E0FF  'hellorange
+  objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+  'txt1(Index).MaxLength = objPRM.EingabeLaenge(txt1(Index))
+
+'*************Alt
+  gvntMerker = txt1(Index)
+  
+  
+    
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "txt1_GotFocus")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  
+  Select Case KeyCode
+  Case vbKeyF1
+    If Shift = 1 Then
+      'Die UMSCHALT-TASTE ist gedrückt.
+      'Hilfetexte können erfast oder bearbeitet werden.
+      objHlp.HlpShow HlpWrite, objPRM.HlpID
+    Else
+      objHlp.HlpShow HlpRead, objPRM.HlpID
+    End If
+  Case vbKeyF2
+    Select Case Index
+    Case 0, 10 'Schl, Text
+      Call cmdAuswahl_Click(Index)
+    End Select
+  Case vbKeyReturn, vbKeyDown
+    If SatzAufbereiten(Index) Then
+      objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+      'Weil objPRM.SprungNeu Validate-Ereignis nicht auslöst,
+      'muss die Umwandlung und Prüfung an der Stelle stattfinden.
+      txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+      If objPRM.EingabeFehler(txt1(Index)) = False Then
+       Call objPRM.SprungNeu("Vorwärts", Shift, txt1(Index).TabIndex, True)
+      End If
+    End If
+  Case vbKeyEscape, vbKeyUp
+    objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+    txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+    If objPRM.EingabeFehler(txt1(Index)) = False Then
+      Call objPRM.SprungNeu("Rückwerts", Shift, txt1(Index).TabIndex, True)
+    End If
+    
+  Case vbKeyPageDown 'Blättern in der Datensatzgruppe. Vorwärtsbewegung (Bild Ab-Taste).
+    If gRS.RecordCount > 0 Then
+      If cmd1(2).Enabled = True Then
+        'Der aktuelle Datensatz wurde verändert
+        Call MsgText(1, 18, 0, 0, 0)
+        If MsgBox(GsMsgText(0), vbYesNo + vbInformation) = vbYes Then
+          'MsgBox "Sie haben die daten geändert. Wollen Sie die Änderungen speichern?"
+          Call SatzSpeichern
+        Else
+          cmd1(2).Enabled = False
+          mnuBearb1(2).Enabled = False
+        End If
+      End If
+      
+      If cmd1(1).Enabled = False Then
+        gRS.MoveFirst
+      Else
+        gRS.MoveNext
+        If gRS.EOF Then
+          gRS.MoveLast
+          Beep
+        End If
+      End If
+      
+      Call SatzZeigen
+    End If
+  Case vbKeyPageUp 'Blättern in der Datensatzgruppe. Rückwärtsbewegung (Bild Auf-Taste).
+    If gRS.RecordCount > 0 Then
+      If cmd1(2).Enabled = True Then
+        'Der aktuelle Datensatz wurde verändert
+        Call MsgText(1, 18, 0, 0, 0)
+        If MsgBox(GsMsgText(0), vbYesNo + vbInformation) = vbYes Then
+          'MsgBox "Sie haben die daten geändert. Wollen Sie die Änderungen speichern?"
+          Call SatzSpeichern
+        Else
+          cmd1(2).Enabled = False
+          mnuBearb1(2).Enabled = False
+        End If
+      End If
+      
+      If cmd1(1).Enabled = False Then
+        gRS.MoveLast
+      Else
+        gRS.MovePrevious
+        If gRS.BOF Then
+          gRS.MoveFirst
+          Beep
+        End If
+      End If
+
+      Call SatzZeigen
+    End If
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "txt1_KeyDown")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_KeyPress(Index As Integer, KeyAscii As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Select Case KeyAscii
+  Case vbKeyReturn, vbKeyEscape
+    KeyAscii = 0
+  End Select
+  
+  KeyAscii = objPRM.EingabePrüfung(KeyAscii)
+  
+  If txt1(Index).MaxLength = 0 Then
+    'Prüfen, ob die neue Zeichenfolge, die zugelassene Länge übersteigt. (Numerischen Felder. Sonst gilt die MaxLength-Eigenschaft von clsPRM)
+    Dim NeuText As String
+    If txt1(Index).SelLength = 0 Then NeuText = Mid(txt1(Index), 1, txt1(Index).SelStart) & Chr(KeyAscii) & Mid(txt1(Index), txt1(Index).SelStart + 1)
+    If KeyAscii <> 0 And KeyAscii <> 8 Then
+      If Len(NeuText) > objPRM.EingabeLaenge(NeuText) Then
+        'Die neue Zeichenfolge würde zu lang. Eingabe unterdrücken.
+        Beep
+        KeyAscii = 0
+      End If
+    End If
+  End If
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "txt1_KeyPress")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_LostFocus(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  txt1(Index).ForeColor = vbActiveTitleBar
+  txt1(Index).BackColor = vbWindowBackground  'Fensterhintergrund(weiß)
+        
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "txt1_LostFocus")
+ '***Ende
+End Sub
+
+
+
+
+Public Sub SatzZeigen()
+ 
+  gbDataChanged = False
+  txt1(0) = "" & gRS!Schl
+  txt1(1) = "" & gRS!Bez
+  objPRM.FindFirstString = "name = 'txt1' AND index = 2"
+  txt1(2) = objPRM.EingabeUmwandlung(gRS!Menge)
+  txt1(3) = "" & gRS!Einheit
+  objPRM.FindFirstString = "name = 'txt1' AND index = 4"
+  txt1(4) = objPRM.EingabeUmwandlung(gRS!Preis)
+  objPRM.FindFirstString = "name = 'txt1' AND index = 5"
+  txt1(5) = objPRM.EingabeUmwandlung(gRS!Rabatt)
+  txt1(6) = "" & gRS!KostSchl
+  txt1(7) = "" & gRS!FibuSchl
+  txt1(8) = "" & gRS!KostKonto
+  txt1(9) = "" & gRS!FiBuKonto
+  txt1(10) = "" & gRS!TextSchl
+  If txt1(10) <> "" Then
+    objDAusw.GetIfOnesHit = True
+    Call cmdAuswahl_Click(10)
+    objDAusw.GetIfOnesHit = False
+  Else
+    txt1(11) = ""
+  End If
+  Check1(0).Value = gRS!Steuer
+  
+  'txt1(12) = "" &
+  
+  gbDataChanged = True
+  cmd1(1).Enabled = True
+  mnuBearb1(1).Enabled = True
+  cmd1(3).Enabled = True
+End Sub
+Public Sub MaskeLeeren()
+  Dim i As Integer
+  
+  gbDataChanged = False
+  For i = 1 To txt1.Count - 1
+    txt1(i) = ""
+  Next
+  Check1(0).Value = 0
+  
+  gbDataChanged = True
+  cmd1(1).Enabled = False
+  mnuBearb1(1).Enabled = False
+  cmd1(3).Enabled = False
+  
+  cmd1(2).Enabled = False
+  mnuBearb1(2).Enabled = False
+End Sub
+
+Public Function SatzSpeichern(Optional Neu As Boolean) As Boolean
+  
+  If Neu Then
+    gRS.AddNew
+    gRS!Schl = txt1(0)
+    gRS!ErstVon = GetSetting("SP50000", "Settings", "User", "")
+  Else
+    gRS.Edit
+  End If
+  
+  gRS!Bez = txt1(1)
+  gRS!Menge = txt1(2)
+  gRS!Einheit = txt1(3)
+  gRS!Preis = txt1(4)
+  gRS!Rabatt = txt1(5)
+  gRS!KostSchl = txt1(6)
+  gRS!FibuSchl = txt1(7)
+  gRS!KostKonto = txt1(8)
+  gRS!FiBuKonto = txt1(9)
+  gRS!TextSchl = txt1(10)
+  gRS!Steuer = Check1(0).Value
+  
+  gRS!AendVon = GetSetting("SP50000", "Settings", "User", "")
+  gRS!AendDat = Now
+  gRS.Update
+  
+  gRS.Bookmark = gRS.LastModified
+  Call SatzZeigen
+  txt1(0).SetFocus
+  
+  cmd1(2).Enabled = False
+  mnuBearb1(2).Enabled = False
+  SatzSpeichern = True
+
+Exit Function
+
+Fehler:
+  Select Case Err.Number
+  Case 3260 'Aktualisieren nicht möglich. Der Datensatz ist von anderem Benutzer gesperrt.
+    Call FehlerErklärung("frmSP52820", "SatzSpeichern")
+    cmd1(2).Enabled = True
+    mnuBearb1(2).Enabled = True
+  Case Else
+    Call FehlerErklärung("frmSP52820", "SatzSpeichern")
+  End Select
+  
+End Function
+
+Public Function SatzAufbereiten(Index As Integer) As Boolean
+  Dim i As Integer
+  Dim antwort As String
+  Dim SatzOK As Boolean
+     
+  Select Case Index
+  Case 0  'Schl
+    If Trim(txt1(Index)) <> "" Then
+      If gRS.RecordCount > 0 Then
+        gRS.FindFirst "[Schl] = """ & Trim(txt1(Index)) & """"
+    
+        If gRS.NoMatch = False Then
+          If gbSatzNeu Then
+            Call MsgText(2, 39, 269, 0, 0)
+            MsgBox GsMsgText(0) & " '' " & txt1(Index) & " '' " & GsMsgText(1), vbInformation
+            'MsgBox "Der Artikel ist bereits vergeben!"
+            Call SatzZeigen
+            gbSatzNeu = False
+            SatzAufbereiten = True
+          Else
+            Call SatzZeigen
+            gvntMerker = txt1(0)
+            SatzAufbereiten = True
+          End If
+        Else
+          If gbSatzNeu Then
+            antwort = vbYes
+          Else
+            Call MsgText(2, 39, 29, 0, 0)
+            antwort = MsgBox(GsMsgText(0) & " '' " & txt1(Index) & " '' " & GsMsgText(1), vbYesNo + vbInformation)
+            'antfort = MsgBox("Der Artikel " & txt1(Index) & " existiert nicht. Möchten Sie ihn Hinzufügen?", vbYesNo + vbInformation)
+          End If
+          If antwort = vbYes Then
+            gRS.AddNew
+            gRS.Fields(0).Value = Trim(txt1(0))
+            gRS.Update
+            gRS.MoveLast
+            gbSatzNeu = False
+            gvntMerker = txt1(0)
+            Call SatzZeigen
+            SatzAufbereiten = True
+          Else
+            SatzAufbereiten = False
+          End If
+        End If
+      Else
+        If gbSatzNeu Then
+          antwort = vbYes
+        Else
+          Call MsgText(2, 39, 29, 0, 0)
+          antwort = MsgBox(GsMsgText(0) & " '' " & txt1(Index) & " '' " & GsMsgText(1), vbYesNo + vbInformation)
+          'antfort = MsgBox("Der Artikel " & txt1(Index) & " existiert nicht. Möchten Sie ihn Hinzufügen?", vbYesNo + vbInformation)
+        End If
+        
+        If antwort = vbYes Then
+          gRS.AddNew
+          gRS.Fields(0).Value = Trim(txt1(0))
+          gRS.Update
+          gRS.MoveLast
+          gvntMerker = txt1(0)
+          Call SatzZeigen
+          SatzAufbereiten = True
+        Else
+          SatzAufbereiten = False
+        End If
+      End If
+    Else
+      SatzAufbereiten = False
+    End If
+  Case Else
+    SatzAufbereiten = True
+  End Select
+
+End Function
+
+Private Sub txt1_Validate(Index As Integer, Cancel As Boolean)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+  txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+  If objPRM.EingabeFehler(txt1(Index)) Then
+    Cancel = True
+  End If
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52820", "txt1_Validate")
+ '***Ende
+
+End Sub
+
+
+
+Public Sub SatzKopieren(NeuerSchluessel As String)
+    If Trim(NeuerSchluessel) <> "" Then
+      If gRS.RecordCount > 0 Then
+        gRS.FindFirst "[Schl] = """ & Trim(NeuerSchluessel) & """"
+        If gRS.NoMatch = False Then
+          Call MsgText(2, 39, 269, 0, 0)
+          MsgBox GsMsgText(0) & " '' " & txt1(0) & " '' " & GsMsgText(1), vbInformation
+          'MsgBox "Der Artikel ist bereits vergeben!"
+        Else
+          gbDataChanged = False
+          txt1(0) = NeuerSchluessel
+          gbDataChanged = True
+          Call SatzSpeichern(True)
+        End If
+      End If
+    End If
+End Sub

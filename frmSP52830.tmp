@@ -1,0 +1,2708 @@
+VERSION 5.00
+Object = "{0BA686C6-F7D3-101A-993E-0000C0EF6F5E}#1.0#0"; "threed32.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Begin VB.Form frmSP52830 
+   BackColor       =   &H80000000&
+   Caption         =   "Sonderfaktura"
+   ClientHeight    =   5640
+   ClientLeft      =   4950
+   ClientTop       =   2655
+   ClientWidth     =   9300
+   Icon            =   "frmSP52830.frx":0000
+   KeyPreview      =   -1  'True
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   5640
+   ScaleWidth      =   9300
+   ShowInTaskbar   =   0   'False
+   Tag             =   "1"
+   Begin VB.Frame Frame1 
+      Caption         =   "FiBu"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1305
+      Index           =   1
+      Left            =   60
+      TabIndex        =   68
+      Top             =   3600
+      Width           =   4665
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   26
+         Left            =   2610
+         Picture         =   "frmSP52830.frx":030A
+         Style           =   1  'Grafisch
+         TabIndex        =   81
+         TabStop         =   0   'False
+         Top             =   480
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   25
+         Left            =   2610
+         Picture         =   "frmSP52830.frx":03EC
+         Style           =   1  'Grafisch
+         TabIndex        =   80
+         TabStop         =   0   'False
+         Top             =   240
+         Width           =   210
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   25
+         Left            =   1530
+         TabIndex        =   28
+         Top             =   240
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   26
+         Left            =   1530
+         TabIndex        =   29
+         Top             =   480
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   27
+         Left            =   1530
+         TabIndex        =   30
+         Top             =   720
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   28
+         Left            =   1530
+         TabIndex        =   31
+         Top             =   960
+         Width           =   1065
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kostenst.-Schl."
+         Height          =   195
+         Index           =   25
+         Left            =   150
+         TabIndex        =   72
+         Top             =   240
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Sachkonten-Schl."
+         Height          =   195
+         Index           =   26
+         Left            =   150
+         TabIndex        =   71
+         Top             =   480
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kostenst.-Konto"
+         Height          =   195
+         Index           =   27
+         Left            =   150
+         TabIndex        =   70
+         Top             =   720
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Sach-Konto"
+         Height          =   195
+         Index           =   28
+         Left            =   150
+         TabIndex        =   69
+         Top             =   960
+         Width           =   1365
+      End
+   End
+   Begin VB.Frame Frame1 
+      Caption         =   "Statistik"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   2025
+      Index           =   3
+      Left            =   4830
+      TabIndex        =   55
+      Top             =   2880
+      Width           =   4365
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   35
+         Left            =   2580
+         Picture         =   "frmSP52830.frx":04CE
+         Style           =   1  'Grafisch
+         TabIndex        =   101
+         TabStop         =   0   'False
+         Top             =   960
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   31
+         Left            =   2580
+         Picture         =   "frmSP52830.frx":05B0
+         Style           =   1  'Grafisch
+         TabIndex        =   100
+         TabStop         =   0   'False
+         Top             =   720
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   30
+         Left            =   2580
+         Picture         =   "frmSP52830.frx":0692
+         Style           =   1  'Grafisch
+         TabIndex        =   99
+         TabStop         =   0   'False
+         Top             =   480
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   29
+         Left            =   2580
+         Picture         =   "frmSP52830.frx":0774
+         Style           =   1  'Grafisch
+         TabIndex        =   98
+         TabStop         =   0   'False
+         Top             =   240
+         Width           =   210
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   33
+         Left            =   1500
+         TabIndex        =   37
+         Top             =   1680
+         Visible         =   0   'False
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   32
+         Left            =   1500
+         TabIndex        =   36
+         Top             =   1440
+         Visible         =   0   'False
+         Width           =   1065
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   33
+         Left            =   2550
+         Picture         =   "frmSP52830.frx":0856
+         Style           =   1  'Grafisch
+         TabIndex        =   95
+         TabStop         =   0   'False
+         Top             =   1680
+         Visible         =   0   'False
+         Width           =   210
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   35
+         Left            =   1500
+         Locked          =   -1  'True
+         TabIndex        =   35
+         Top             =   960
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   29
+         Left            =   1500
+         Locked          =   -1  'True
+         TabIndex        =   32
+         Top             =   240
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   30
+         Left            =   1500
+         Locked          =   -1  'True
+         TabIndex        =   33
+         Top             =   480
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   31
+         Left            =   1500
+         Locked          =   -1  'True
+         TabIndex        =   34
+         Top             =   720
+         Width           =   1065
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kfz-Suchbegriff"
+         Height          =   195
+         Index           =   33
+         Left            =   150
+         TabIndex        =   97
+         Top             =   1680
+         Visible         =   0   'False
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Relation"
+         Height          =   195
+         Index           =   32
+         Left            =   150
+         TabIndex        =   96
+         Top             =   1440
+         Visible         =   0   'False
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Sendungs-Nr."
+         Height          =   195
+         Index           =   35
+         Left            =   150
+         TabIndex        =   94
+         Top             =   960
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Abf.-Datum"
+         Height          =   195
+         Index           =   29
+         Left            =   150
+         TabIndex        =   67
+         Top             =   240
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Abf.-Zusatz"
+         Height          =   195
+         Index           =   30
+         Left            =   150
+         TabIndex        =   60
+         Top             =   480
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Abf.-Position"
+         Height          =   195
+         Index           =   31
+         Left            =   150
+         TabIndex        =   59
+         Top             =   720
+         Width           =   1365
+      End
+   End
+   Begin VB.Frame Frame1 
+      Caption         =   "Beleg"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   2775
+      Index           =   2
+      Left            =   4830
+      TabIndex        =   54
+      Top             =   30
+      Width           =   4365
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   24
+         Left            =   3030
+         TabIndex        =   92
+         Top             =   2400
+         Visible         =   0   'False
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   16
+         Left            =   1530
+         TabIndex        =   27
+         Top             =   2400
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   15
+         Left            =   1530
+         TabIndex        =   26
+         Top             =   2160
+         Width           =   1065
+      End
+      Begin VB.CheckBox Check1 
+         Caption         =   "ausweisen"
+         Height          =   195
+         Index           =   1
+         Left            =   2640
+         TabIndex        =   20
+         Top             =   720
+         Width           =   1125
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   18
+         Left            =   3960
+         Picture         =   "frmSP52830.frx":0938
+         Style           =   1  'Grafisch
+         TabIndex        =   79
+         TabStop         =   0   'False
+         Top             =   720
+         Visible         =   0   'False
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   17
+         Left            =   2610
+         Picture         =   "frmSP52830.frx":0A1A
+         Style           =   1  'Grafisch
+         TabIndex        =   78
+         TabStop         =   0   'False
+         Top             =   480
+         Width           =   210
+      End
+      Begin VB.CheckBox Check1 
+         Alignment       =   1  'Rechts ausgerichtet
+         Caption         =   "Vorlage"
+         Height          =   200
+         Index           =   0
+         Left            =   120
+         TabIndex        =   17
+         Top             =   240
+         Width           =   2685
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   17
+         Left            =   1530
+         TabIndex        =   18
+         Top             =   480
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         BackColor       =   &H8000000F&
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   18
+         Left            =   1530
+         Locked          =   -1  'True
+         TabIndex        =   19
+         TabStop         =   0   'False
+         Top             =   720
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   19
+         Left            =   1530
+         TabIndex        =   21
+         Top             =   960
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         Enabled         =   0   'False
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   20
+         Left            =   1530
+         TabIndex        =   22
+         Top             =   1200
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   21
+         Left            =   1530
+         TabIndex        =   23
+         Top             =   1440
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   22
+         Left            =   1530
+         TabIndex        =   24
+         Top             =   1680
+         Width           =   1065
+      End
+      Begin VB.TextBox txt1 
+         Alignment       =   1  'Rechts
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   23
+         Left            =   1530
+         TabIndex        =   25
+         Top             =   1920
+         Width           =   1065
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Porto vom Stamm"
+         Height          =   195
+         Index           =   24
+         Left            =   2820
+         TabIndex        =   93
+         Top             =   2130
+         Visible         =   0   'False
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Beleg-Datum"
+         Height          =   195
+         Index           =   16
+         Left            =   150
+         TabIndex        =   84
+         Top             =   2400
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Beleg-Nr."
+         Height          =   195
+         Index           =   15
+         Left            =   150
+         TabIndex        =   83
+         Top             =   2160
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Beleg-Währung"
+         Height          =   195
+         Index           =   17
+         Left            =   150
+         TabIndex        =   66
+         Top             =   480
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Mand.-Währung"
+         Height          =   195
+         Index           =   18
+         Left            =   150
+         TabIndex        =   65
+         Top             =   720
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Kurs"
+         Height          =   195
+         Index           =   19
+         Left            =   150
+         TabIndex        =   64
+         Top             =   960
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Steuersatz"
+         Height          =   195
+         Index           =   20
+         Left            =   150
+         TabIndex        =   63
+         Top             =   1200
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Skonto %"
+         Height          =   195
+         Index           =   21
+         Left            =   150
+         TabIndex        =   58
+         Top             =   1440
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Skonto-Tage"
+         Height          =   195
+         Index           =   22
+         Left            =   150
+         TabIndex        =   57
+         Top             =   1680
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Tage-Netto"
+         Height          =   195
+         Index           =   23
+         Left            =   150
+         TabIndex        =   56
+         Top             =   1920
+         Width           =   1365
+      End
+   End
+   Begin VB.Frame Frame1 
+      Caption         =   "Kunde"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   3495
+      Index           =   0
+      Left            =   60
+      TabIndex        =   46
+      Top             =   30
+      Width           =   4665
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   34
+         Left            =   1530
+         TabIndex        =   1
+         Top             =   480
+         Width           =   225
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   34
+         Left            =   1770
+         Picture         =   "frmSP52830.frx":0AFC
+         Style           =   1  'Grafisch
+         TabIndex        =   91
+         TabStop         =   0   'False
+         Top             =   480
+         Width           =   210
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   12
+         Left            =   2010
+         TabIndex        =   2
+         Top             =   480
+         Width           =   975
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   9
+         Left            =   2940
+         Picture         =   "frmSP52830.frx":0BDE
+         Style           =   1  'Grafisch
+         TabIndex        =   89
+         TabStop         =   0   'False
+         Top             =   2160
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   11
+         Left            =   4260
+         Picture         =   "frmSP52830.frx":0CC0
+         Style           =   1  'Grafisch
+         TabIndex        =   88
+         TabStop         =   0   'False
+         Top             =   2640
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   10
+         Left            =   4260
+         Picture         =   "frmSP52830.frx":0DA2
+         Style           =   1  'Grafisch
+         TabIndex        =   87
+         TabStop         =   0   'False
+         Top             =   2400
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   6
+         Left            =   4230
+         Picture         =   "frmSP52830.frx":0E84
+         Style           =   1  'Grafisch
+         TabIndex        =   86
+         TabStop         =   0   'False
+         Top             =   1680
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   5
+         Left            =   3570
+         Picture         =   "frmSP52830.frx":0F66
+         Style           =   1  'Grafisch
+         TabIndex        =   85
+         TabStop         =   0   'False
+         Top             =   1440
+         Width           =   210
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         Height          =   210
+         Index           =   3
+         Left            =   4260
+         Picture         =   "frmSP52830.frx":1048
+         Style           =   1  'Grafisch
+         TabIndex        =   77
+         TabStop         =   0   'False
+         Top             =   1200
+         Width           =   210
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   3
+         Left            =   1530
+         TabIndex        =   5
+         Top             =   1200
+         Width           =   2715
+      End
+      Begin VB.ComboBox Combo1 
+         Appearance      =   0  '2D
+         Height          =   315
+         Index           =   0
+         ItemData        =   "frmSP52830.frx":112A
+         Left            =   1530
+         List            =   "frmSP52830.frx":112C
+         Style           =   2  'Dropdown-Liste
+         TabIndex        =   16
+         Top             =   3120
+         Width           =   1695
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   13
+         Left            =   1530
+         TabIndex        =   14
+         Top             =   2880
+         Width           =   1425
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   14
+         Left            =   3030
+         TabIndex        =   15
+         Top             =   2880
+         Width           =   1425
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   11
+         Left            =   1530
+         TabIndex        =   13
+         Top             =   2640
+         Width           =   2715
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   1
+         Left            =   1530
+         TabIndex        =   3
+         Top             =   720
+         Width           =   2925
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   10
+         Left            =   1530
+         TabIndex        =   12
+         Top             =   2400
+         Width           =   2715
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   9
+         Left            =   1950
+         TabIndex        =   11
+         Top             =   2160
+         Width           =   975
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   8
+         Left            =   1530
+         TabIndex        =   10
+         Top             =   2160
+         Width           =   345
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   195
+         Index           =   7
+         Left            =   1530
+         TabIndex        =   9
+         Top             =   1920
+         Width           =   2925
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   6
+         Left            =   1530
+         TabIndex        =   8
+         Top             =   1680
+         Width           =   2685
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   5
+         Left            =   2580
+         TabIndex        =   7
+         Top             =   1440
+         Width           =   975
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   4
+         Left            =   1530
+         TabIndex        =   6
+         Top             =   1440
+         Width           =   975
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         DataSource      =   "Data1"
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   2
+         Left            =   1530
+         TabIndex        =   4
+         Top             =   960
+         Width           =   2925
+      End
+      Begin VB.TextBox txt1 
+         BorderStyle     =   0  'Kein
+         ForeColor       =   &H80000002&
+         Height          =   200
+         Index           =   0
+         Left            =   1530
+         TabIndex        =   0
+         Top             =   240
+         Width           =   1455
+      End
+      Begin VB.CommandButton cmdAuswahl 
+         CausesValidation=   0   'False
+         Height          =   210
+         Index           =   0
+         Left            =   3000
+         Picture         =   "frmSP52830.frx":112E
+         Style           =   1  'Grafisch
+         TabIndex        =   47
+         TabStop         =   0   'False
+         Top             =   240
+         Width           =   210
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Konto-Knz/-Nr."
+         Height          =   195
+         Index           =   12
+         Left            =   150
+         TabIndex        =   90
+         Top             =   510
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Ortsteil"
+         Height          =   195
+         Index           =   11
+         Left            =   150
+         TabIndex        =   76
+         Top             =   2640
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Ort"
+         Height          =   195
+         Index           =   6
+         Left            =   150
+         TabIndex        =   75
+         Top             =   1680
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Name2"
+         Height          =   195
+         Index           =   2
+         Left            =   150
+         TabIndex        =   74
+         Top             =   990
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Ansprechpartner"
+         Height          =   195
+         Index           =   3
+         Left            =   150
+         TabIndex        =   73
+         Top             =   1230
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Steuer-Nr, UID"
+         Height          =   195
+         Index           =   13
+         Left            =   150
+         TabIndex        =   62
+         Top             =   2880
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Umsatzsteuer"
+         Height          =   195
+         Index           =   14
+         Left            =   150
+         TabIndex        =   61
+         Top             =   3120
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Ort"
+         Height          =   195
+         Index           =   10
+         Left            =   150
+         TabIndex        =   53
+         Top             =   2400
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Name1"
+         Height          =   195
+         Index           =   1
+         Left            =   150
+         TabIndex        =   52
+         Top             =   750
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Lkz-Plz"
+         Height          =   195
+         Index           =   9
+         Left            =   150
+         TabIndex        =   51
+         Top             =   2160
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Straße"
+         Height          =   195
+         Index           =   8
+         Left            =   150
+         TabIndex        =   50
+         Top             =   1920
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "Postfach, Plz"
+         Height          =   195
+         Index           =   5
+         Left            =   150
+         TabIndex        =   49
+         Top             =   1470
+         Width           =   1365
+      End
+      Begin VB.Label lbl1 
+         Caption         =   "MCode"
+         Height          =   195
+         Index           =   0
+         Left            =   150
+         TabIndex        =   48
+         Top             =   270
+         Width           =   1365
+      End
+   End
+   Begin Threed.SSPanel SSPanel1 
+      Height          =   360
+      Index           =   0
+      Left            =   0
+      TabIndex        =   45
+      Top             =   5010
+      Width           =   9300
+      _Version        =   65536
+      _ExtentX        =   16404
+      _ExtentY        =   635
+      _StockProps     =   15
+      BackColor       =   -2147483633
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Schließen"
+         CausesValidation=   0   'False
+         Height          =   300
+         Index           =   6
+         Left            =   7980
+         TabIndex        =   39
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Beleg"
+         Height          =   300
+         Index           =   5
+         Left            =   6660
+         TabIndex        =   38
+         Top             =   30
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Suchen"
+         Height          =   300
+         Index           =   4
+         Left            =   5340
+         TabIndex        =   44
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Öffnen"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   3
+         Left            =   4020
+         TabIndex        =   43
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Speichern"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   2
+         Left            =   2700
+         TabIndex        =   42
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Löschen"
+         CausesValidation=   0   'False
+         Enabled         =   0   'False
+         Height          =   300
+         Index           =   1
+         Left            =   1380
+         TabIndex        =   41
+         Top             =   30
+         Visible         =   0   'False
+         Width           =   1260
+      End
+      Begin VB.CommandButton cmd1 
+         Caption         =   "Neu"
+         CausesValidation=   0   'False
+         Height          =   300
+         Index           =   0
+         Left            =   60
+         TabIndex        =   40
+         Top             =   30
+         Width           =   1260
+      End
+   End
+   Begin MSComctlLib.StatusBar sta1 
+      Align           =   2  'Unten ausrichten
+      Height          =   345
+      Left            =   0
+      TabIndex        =   82
+      Top             =   5295
+      Width           =   9300
+      _ExtentX        =   16404
+      _ExtentY        =   609
+      _Version        =   393216
+      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+         NumPanels       =   3
+         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Object.Width           =   1376
+            MinWidth        =   1376
+         EndProperty
+         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Object.Width           =   1376
+            MinWidth        =   1376
+         EndProperty
+         BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            AutoSize        =   1
+            Object.Width           =   13097
+            MinWidth        =   12541
+         EndProperty
+      EndProperty
+   End
+   Begin VB.Menu mnuDat 
+      Caption         =   "Datei"
+      Index           =   0
+      Begin VB.Menu mnuDat1 
+         Caption         =   "Beleg suchen"
+         Index           =   5
+         Begin VB.Menu mnuSuch 
+            Caption         =   "ungedruckt"
+            Index           =   0
+         End
+         Begin VB.Menu mnuSuch 
+            Caption         =   "gedruckt"
+            Index           =   1
+         End
+         Begin VB.Menu mnuSuch 
+            Caption         =   "Vorlagen"
+            Index           =   2
+         End
+      End
+      Begin VB.Menu mnuDat1 
+         Caption         =   "Schließen"
+         Index           =   6
+      End
+   End
+   Begin VB.Menu mnuBearb 
+      Caption         =   "Bearbeiten"
+      Index           =   0
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Neu"
+         Index           =   0
+      End
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Speichern"
+         Enabled         =   0   'False
+         Index           =   2
+         Visible         =   0   'False
+      End
+      Begin VB.Menu mnuBearb1 
+         Caption         =   "Beleg"
+         Index           =   5
+      End
+   End
+   Begin VB.Menu mnuOpt 
+      Caption         =   "Optionen"
+      Index           =   0
+      Begin VB.Menu mnuOpt1 
+         Caption         =   "Druckerauswahldialog"
+         Index           =   0
+      End
+      Begin VB.Menu mnuOpt1 
+         Caption         =   "Manuelle Beleg -Nr und -Datum Erfassung"
+         Index           =   1
+      End
+   End
+End
+Attribute VB_Name = "frmSP52830"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+  
+  Public gintPrivBelegArt As Integer
+  Public glngBelegID As Long
+  Public gintDruck As Integer '0=nicht gedruckt, 1=gedruckt
+  Public gintZwAblage As Integer
+  
+  Private gbDataChanged As Boolean
+  Private gbSatzNeu As Boolean
+  
+  Private gvntMerker As Variant
+  Private gbEinfg As Boolean
+  Private gstrEWerk As String
+  
+  Private objPRM As clsPRM
+  Private objDAusw As SPDAOAusw.clsDAOAuswahl
+  Private objDAuswDef As SPDAOAusw.clsDAOAuswahl
+  Private objDAOSeek As SPDAOSeek.clsDAOSeek
+  Private objHlp As SpHlp.clsHlp
+  
+  
+
+
+
+
+Private Sub Check1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  Select Case KeyCode
+  Case vbKeyF1
+    objPRM.FindFirstString = "name = 'Check1' AND index = " & Index
+    If Shift = 1 Then
+      'Die UMSCHALT-TASTE ist gedrückt.
+      'Hilfetexte können erfast oder bearbeitet werden.
+      objHlp.HlpShow HlpWrite, objPRM.HlpID
+    Else
+      objHlp.HlpShow HlpRead, objPRM.HlpID
+    End If
+  Case vbKeyReturn, vbKeyDown
+    objPRM.FindFirstString = "name = 'Check1' AND index = " & Index
+    Call objPRM.SprungNeu("Vorwärts", Shift, Check1(Index).TabIndex, True)
+  Case vbKeyEscape, vbKeyUp
+    objPRM.FindFirstString = "name = 'Check1' AND index = " & Index
+    Call objPRM.SprungNeu("Rückwerts", Shift, Check1(Index).TabIndex, True)
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Check1_KeyDown")
+ '***Ende
+
+End Sub
+
+
+Private Sub cmd1_Click(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim antwort As String
+  
+  Select Case Index
+  Case 0 'Neu
+    If txt1(1) <> "" Then
+      If MsgBox("Sie haben einige Daten erfasst. Soll die Eingabemaske trotzdem geleert werden?", vbYesNo + vbQuestion) = vbYes Then
+        MaskeLeeren
+        txt1(0) = ""
+        txt1(0).SetFocus
+      End If
+    Else
+      MaskeLeeren
+      txt1(0) = ""
+      txt1(0).SetFocus
+    End If
+    
+  Case 1 'Löschen
+    Call MsgText(1, 14, 0, 0, 0)
+    antwort = MsgBox(GsMsgText(0), vbYesNo + vbQuestion + vbDefaultButton2)
+    'antwort = MsgBox("Wollen Sie den Datensatz wirklich löschen?", vbYesNo + vbExclamation + vbDefaultButton2)
+    If antwort = vbYes Then
+    
+    End If
+    txt1(0).SetFocus
+  Case 2 'Speichern
+    'Call SatzSpeichern
+  Case 3 'Kopieren
+  Case 5 'Beleg
+    If txt1(15).Visible Then
+      If IsNumeric(txt1(15)) Then
+        If Not IstBelegNrFrei(txt1(15), glngBelegID, gintPrivBelegArt) Then
+          MsgBox "Die vorgeschlagene Beleg-Nummer ''" & txt1(15) & "'' wurde bereits vergeben. Bitte, wählen Sie eine andere Beleg-Nummer.", vbExclamation
+          gbDataChanged = False
+          txt1(15) = ""
+          txt1(15).SetFocus
+          gbDataChanged = True
+          Exit Sub
+        End If
+      End If
+    End If
+    
+    i = Plausi
+    If i = 999 Then
+      MousePointer = 11
+      If gintPrivBelegArt = 0 Then
+        Set frmRechnungErf = New frmSP52831
+        Set frmRechnungErf.frmParent = Me
+        Load frmRechnungErf
+        frmRechnungErf.FolgeZeigen glngBelegID
+        frmRechnungErf.Show vbModal, Me
+      Else
+        Set frmGutschriftErf = New frmSP52831
+        Set frmGutschriftErf.frmParent = Me
+        Load frmGutschriftErf
+        frmGutschriftErf.FolgeZeigen glngBelegID
+        frmGutschriftErf.Show vbModal, Me
+      End If
+      MousePointer = 0
+      txt1(0).SetFocus
+    Else
+      Call MsgText(2, 116, 12, 0, 0)
+      'Ein Pflichtfeld ist leer! Das Feld muss ausgefüllt werden.
+      MsgBox GsMsgText(0) & " " & GsMsgText(1), vbExclamation
+      txt1(i).SetFocus
+    End If
+      
+  Case 6 'Schließen
+    Unload Me
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "cmd1_Click")
+ '***Ende
+
+End Sub
+
+Private Sub cmdAuswahl_Click(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim ColLeft As Integer
+  Dim RowBottom As Integer
+  Dim OT As String
+  Dim SQL As String
+  
+  '*****
+  Dim rc As rect
+
+  Call GetWindowRect(txt1(Index).hwnd, rc)
+  ColLeft = rc.left * Screen.TwipsPerPixelX - 70
+  RowBottom = rc.bottom * Screen.TwipsPerPixelY - 340
+  '*****
+  If Index = 5 Or Index = 6 Or Index = 9 Or Index = 10 Or Index = 11 Then
+    'Zugrif auf E-Werk
+    objDAOSeek.BorderStyle = 4
+    objDAOSeek.Caption = lbl1(Index)
+    objDAOSeek.top = RowBottom
+    objDAOSeek.left = ColLeft
+    
+    objDAOSeek.ColParameter 0, ColVisible, -1
+    objDAOSeek.ColParameter 1, ColVisible, -1
+    objDAOSeek.ColParameter 2, ColVisible, -1
+    objDAOSeek.ColParameter 3, ColVisible, -1
+    objDAOSeek.ColParameter 2, ColCaption, lbl1(10)
+    objDAOSeek.ColParameter 3, ColCaption, lbl1(11)
+    
+    Select Case Index
+    Case 5 'Postfach-PLZ
+      If gstrEWerk = "BzgEu" Then
+        objDAOSeek.RSOpen gstrEWerk, "LkzPlz", txt1(8), OrtUmwandlung(txt1(Index))
+      Else
+        objDAOSeek.RSOpen gstrEWerk, "Plz", txt1(Index)
+      End If
+  
+      If objDAOSeek.Abbruch = False Then
+        'Auswahl wurde bestätigt. Inhalte ausgeben.
+        txt1(Index) = objDAOSeek.FieldText(1)
+        txt1(Index + 1) = objDAOSeek.FieldText(2)
+        txt1(Index + 2).SetFocus
+      Else
+        txt1(Index).SetFocus
+      End If
+    Case 6 'Postfach-Ort
+      If gstrEWerk = "BzgEu" Then
+        objDAOSeek.RSOpen gstrEWerk, "LkzOrt", txt1(8), OrtUmwandlung(txt1(Index))
+      Else
+        objDAOSeek.RSOpen gstrEWerk, "Ort", txt1(Index)
+      End If
+      
+      If objDAOSeek.Abbruch = False Then
+        'Auswahl wurde bestätigt. Inhalte ausgeben.
+        txt1(Index - 1) = objDAOSeek.FieldText(1)
+        txt1(Index) = objDAOSeek.FieldText(2)
+        txt1(Index + 1).SetFocus
+      Else
+        txt1(Index).SetFocus
+      End If
+    Case 9 'PLZ
+      If gstrEWerk = "BzgEu" Then
+        objDAOSeek.RSOpen gstrEWerk, "LkzPlz", txt1(Index - 1), OrtUmwandlung(txt1(Index))
+      Else
+        objDAOSeek.RSOpen gstrEWerk, "Plz", txt1(Index)
+      End If
+  
+      If objDAOSeek.Abbruch = False Then
+        'Auswahl wurde bestätigt. Inhalte ausgeben.
+        txt1(Index - 1) = objDAOSeek.FieldText(0)
+        txt1(Index) = objDAOSeek.FieldText(1)
+        txt1(Index + 1) = objDAOSeek.FieldText(2)
+        txt1(Index + 2) = objDAOSeek.FieldText(3)
+        txt1(Index + 3).SetFocus
+      Else
+        txt1(Index).SetFocus
+      End If
+    Case 10 'Ort1
+      If gstrEWerk = "BzgEu" Then
+        If Trim(txt1(Index + 1)) = "" Then
+          objDAOSeek.RSOpen gstrEWerk, "LkzOrt", txt1(Index - 2), OrtUmwandlung(txt1(Index))
+        Else
+          objDAOSeek.RSOpen gstrEWerk, "LkzOrtOt", txt1(Index - 2), OrtUmwandlung(txt1(Index)), OrtUmwandlung(txt1(Index + 1))
+        End If
+      Else
+        If Trim(txt1(Index + 1)) = "" Then
+          objDAOSeek.RSOpen gstrEWerk, "Ort", OrtUmwandlung(txt1(Index))
+        Else
+          objDAOSeek.RSOpen gstrEWerk, "OrtOt", OrtUmwandlung(txt1(Index)), OrtUmwandlung(txt1(Index + 1))
+        End If
+      End If
+  
+      If objDAOSeek.Abbruch = False Then
+        'Auswahl wurde bestätigt. Inhalte ausgeben.
+        txt1(Index - 2) = objDAOSeek.FieldText(0)
+        txt1(Index - 1) = objDAOSeek.FieldText(1)
+        txt1(Index) = objDAOSeek.FieldText(2)
+        txt1(Index + 1) = objDAOSeek.FieldText(3)
+        txt1(Index + 2).SetFocus
+      Else
+        txt1(Index).SetFocus
+      End If
+    Case 11 'Ort2
+      If Trim(txt1(Index)) = "" Then
+        'Um die Suche nicht bei leeren Eintragungen zu beginnen.
+        OT = "A"
+      Else
+        OT = txt1(Index)
+      End If
+      
+      If gstrEWerk = "BzgEu" Then
+        If Trim(txt1(Index - 1)) = "" Then
+          objDAOSeek.RSOpen gstrEWerk, "LkzOt", txt1(Index - 3), OrtUmwandlung(OT)
+        Else
+          objDAOSeek.RSOpen gstrEWerk, "LkzOrtOt", txt1(Index - 3), OrtUmwandlung(txt1(Index - 1)), OrtUmwandlung(OT)
+        End If
+      Else
+        If Trim(txt1(Index - 1)) = "" Then
+          objDAOSeek.RSOpen gstrEWerk, "Ot", OrtUmwandlung(OT)
+        Else
+          objDAOSeek.RSOpen gstrEWerk, "OrtOt", OrtUmwandlung(txt1(Index - 1)), OrtUmwandlung(OT)
+        End If
+      End If
+      
+      If objDAOSeek.Abbruch = False Then
+        'Auswahl wurde bestätigt. Inhalte ausgeben.
+        txt1(Index - 3) = objDAOSeek.FieldText(0)
+        txt1(Index - 2) = objDAOSeek.FieldText(1)
+        txt1(Index - 1) = objDAOSeek.FieldText(2)
+        txt1(Index) = objDAOSeek.FieldText(3)
+        txt1(Index + 1).SetFocus
+      Else
+        txt1(Index).SetFocus
+      End If
+    End Select
+  Else
+    If Index = 34 Then
+      'Konto-Kennzeichen
+      objDAuswDef.BorderStyle = 4
+      objDAuswDef.ColumnHeaders = False
+      objDAuswDef.top = RowBottom + 80
+      objDAuswDef.left = ColLeft
+      objDAuswDef.ColParameter 0, ColWidth, txt1(Index).Width
+      objDAuswDef.ColParameter 1, ColWidth, 800
+      If Trim(txt1(Index)) <> "" Then
+        objDAuswDef.FindFirst ("Knz like '" & txt1(Index) & "%'")
+      End If
+      objDAuswDef.RSOpen "SELECT Knz, KnzBez1 FROM [Auswahl] WHERE TabName = '1200_AllgDaten' AND FeldName = 'KtoKnz' AND (Knz = 'D' OR KnZ = 'K') ORDER BY Knz"
+      If objDAuswDef.Abbruch = False Then
+        txt1(Index) = objDAuswDef.FieldText(0)
+        Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+      Else
+        txt1(Index).SetFocus
+      End If
+    Else
+      objDAusw.FilterBar = True
+      objDAusw.BorderStyle = 4
+      objDAusw.Caption = lbl1(Index)
+      objDAusw.top = RowBottom
+      objDAusw.left = ColLeft
+      
+      Select Case Index
+      Case 0 'MCode
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 1, ColWidth, 700
+        objDAusw.ColParameter 7, ColVisible, 0
+        'Datensatz positionieren.
+        If Trim(txt1(Index)) <> "" Then
+          objDAusw.FindFirst ("MCode like '" & txt1(Index) & "%'")
+        End If
+        
+        objDAusw.RSOpen "SELECT MCode,KtoKnz,KtoNr,Name1,Lkz,Plz,Ort,Sperre FROM [1200_AllgDaten] WHERE (KundenKnz = 0 OR KundenKnz = 99) AND (KtoKnz = 'D' OR KtoKnz = 'K') ORDER BY MCode"
+        If objDAusw.Abbruch = False Then
+          If objDAusw.FieldText(7) = "0" Then
+            txt1(Index) = objDAusw.FieldText(0)
+            Call KundeZeigen
+            Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+          Else
+            MsgBox "Gesperrte Kundendaten: " & objDAusw.FieldText(0), vbCritical
+            txt1(Index) = ""
+          End If
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 3 'Ansprechpartner
+        objDAusw.RSOpen "SELECT Anrede,Name1,Name2 FROM [1200_AnsprPartner] WHERE MCode = '" & txt1(0) & "' ORDER BY Standard"
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0) & " " & objDAusw.FieldText(1) & " " & objDAusw.FieldText(2)
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 17 'Währung
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 1, ColNumberFormat, "#0.00"
+        objDAusw.ColParameter 2, ColNumberFormat, "###0.#####0"
+        'Datensatz positionieren.
+        If Trim(txt1(Index)) <> "" Then
+          objDAusw.FindFirst ("ISO like '" & txt1(Index) & "%'")
+        End If
+        objDAusw.RSOpen "SELECT ISO,MwSt,Kurs,Schl,Land FROM [1100_Währungen]"
+        'objDAusw.RSOpen "SELECT DISTINCT ISO FROM [1100_Währungen]"
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          txt1(20) = Format(objDAusw.FieldText(1), "#0.00") 'Steuersatz
+          KursFuerRechnung "0", txt1(17), txt1(18) ' "0" ist ein Dummy-Wert
+          'txt1(19) = objDAusw.FieldText(2) 'Kurs (das weiss ich noch nicht)
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 25, 26 'FiBu-Schlüßeln
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        'Datensatz positionieren.
+        If Trim(txt1(Index)) <> "" Then
+          objDAusw.FindFirst ("Schl like '" & txt1(Index) & "%'")
+        End If
+        If Index = 25 Then
+          objDAusw.RSOpen "SELECT Schl,Bezeichnung,Erlöse,Kosten FROM [1100_FiBuKostenStellen]"
+        Else
+          objDAusw.RSOpen "SELECT Schl,Bezeichnung,Erlöse,Kosten FROM [1100_FiBuSachkonten]"
+        End If
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 33 'Kfz
+        objDAusw.RSOpen "SELECT KfzSchl,Art,Knz,Nutzlast FROM [1600_Fahrzeuge]"
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 29 'Abf.-Datum
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 1, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 2, ColWidth, txt1(Index).Width
+        
+        SQL = "SELECT AbfDatum,AbfZus,AbfPos FROM [2800_Abfr_SdgAusw] GROUP BY AbfPos,AbfZus,AbfDatum "
+        SQL = SQL & " ORDER BY AbfDatum,AbfZus,AbfPos"
+        
+        If IsDate(txt1(Index)) Then objDAusw.FindFirst ("AbfDatum >= DateValue('" & txt1(Index).Text & "')")
+        
+        objDAusw.RSOpen SQL
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          txt1(Index + 1) = objDAusw.FieldText(1)
+          txt1(Index + 2) = objDAusw.FieldText(2)
+          txt1(35) = ""
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 30  'Abf.-Zusatz
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 1, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 2, ColWidth, txt1(Index).Width
+        
+        SQL = "SELECT AbfZus,AbfPos,AbfDatum FROM [2800_Abfr_SdgAusw] GROUP BY AbfPos,AbfZus,AbfDatum "
+        SQL = SQL & " ORDER BY AbfZus,AbfPos,AbfDatum"
+        
+        If Trim(txt1(Index)) <> "" Then objDAusw.FindFirst ("AbfZus like '" & txt1(Index) & "%'")
+        
+        objDAusw.RSOpen SQL
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          txt1(Index + 1) = objDAusw.FieldText(1)
+          txt1(Index - 1) = objDAusw.FieldText(2)
+          txt1(35) = ""
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 31  'Abf.-Position
+        objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 1, ColWidth, txt1(Index).Width
+        objDAusw.ColParameter 2, ColWidth, txt1(Index).Width
+        
+        SQL = "SELECT AbfPos,AbfZus,AbfDatum FROM [2800_Abfr_SdgAusw] GROUP BY AbfPos,AbfZus,AbfDatum "
+        SQL = SQL & " ORDER BY AbfPos,AbfZus,AbfDatum"
+        
+        If Trim(txt1(Index)) <> "" Then objDAusw.FindFirst ("AbfPos >= " & txt1(Index))
+        
+        objDAusw.RSOpen SQL
+        If objDAusw.Abbruch = False Then
+          txt1(Index) = objDAusw.FieldText(0)
+          txt1(Index - 1) = objDAusw.FieldText(1)
+          txt1(Index - 2) = objDAusw.FieldText(2)
+          txt1(35) = ""
+          Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+        Else
+          txt1(Index).SetFocus
+        End If
+      Case 35 'SendungsNr
+        If IsNumeric(txt1(31)) And IsDate(txt1(29)) Then
+          objDAusw.MaxWidth = 12000
+          objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+          objDAusw.ColParameter 2, ColWidth, 1500
+          objDAusw.ColParameter 3, ColWidth, 600
+          objDAusw.ColParameter 4, ColWidth, 1500
+          objDAusw.ColParameter 5, ColWidth, 1500
+          objDAusw.ColParameter 6, ColWidth, 600
+          objDAusw.ColParameter 7, ColWidth, 1500
+          
+          SQL = "SELECT ErfNr,Datum,AName,APlz,AOrt,EName,EPlz,EOrt FROM [2800_Abfr_SdgAusw] "
+          SQL = SQL & " WHERE AbfPos = " & txt1(31)
+          SQL = SQL & " AND AbfZus = '" & txt1(30) & "'"
+          SQL = SQL & " AND AbfDatum = DateValue('" & txt1(29).Text & "')"
+          SQL = SQL & " UNION SELECT '<alle>' AS ErfNr, Null AS Datum,'' AS AName,'' AS APlz,'' AS AOrt,'' AS EName,'' AS EPlz,'' AS EOrt FROM [2800_Abfr_SdgAusw]"
+          
+          objDAusw.RSOpen SQL
+          If objDAusw.Abbruch = False Then
+            txt1(Index) = objDAusw.FieldText(0)
+            Call objPRM.SprungNeu("Vorwärts", 0, txt1(Index).TabIndex)
+          Else
+            txt1(Index).SetFocus
+          End If
+        End If
+      End Select
+    End If
+  End If
+       
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "cmdAuswahl_Click")
+ '***Ende
+End Sub
+
+
+
+
+
+
+
+
+
+Private Sub Combo1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  Select Case KeyCode
+  Case vbKeyF1
+    objPRM.FindFirstString = "name = 'Combo1' AND index = " & Index
+    If Shift = 1 Then
+      'Die UMSCHALT-TASTE ist gedrückt.
+      'Hilfetexte können erfast oder bearbeitet werden.
+      objHlp.HlpShow HlpWrite, objPRM.HlpID
+    Else
+      objHlp.HlpShow HlpRead, objPRM.HlpID
+    End If
+  Case vbKeyReturn
+    objPRM.FindFirstString = "name = 'Combo1' AND index = " & Index
+    Call objPRM.SprungNeu("Vorwärts", Shift, Combo1(Index).TabIndex, True)
+  Case vbKeyEscape
+    objPRM.FindFirstString = "name = 'Combo1' AND index = " & Index
+    Call objPRM.SprungNeu("Rückwerts", Shift, Combo1(Index).TabIndex, True)
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Combo1_KeyDown")
+ '***Ende
+
+End Sub
+
+
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim AltDown
+  Const vbAltMask = 4
+  
+  'Beim clicken auf das Programm-Symbol im Register Aktive Programme (SP51.ProgrammAktivieren)
+  'wird SendKeys "%{F12}", True - Befehl ausgeführt.
+  'Aktuelle form wird zu aktiven Form in normaler Größe.
+  AltDown = (Shift And vbAltMask) > 0
+  If KeyCode = vbKeyF12 Then
+    If AltDown Then
+      Call Main
+    End If
+  End If
+  
+  If Shift = 2 Then
+    GStrg = True
+  End If
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Form_KeyDown")
+ '***Ende
+End Sub
+
+
+Private Sub Form_Load()
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim x As Control
+  
+  If GsTitel <> "" Then
+    GlSP51000hwnd = FindWindow(vbNullString, GsTitel)
+    SetWindowLong Me.hwnd, GWL_HWNDPARENT, GlSP51000hwnd
+  End If
+  
+  Set objPRM = New clsPRM
+  Set objPRM.gForm = Me
+  objPRM.PRM_Alle
+  
+  gintPrivBelegArt = GintBelegArt
+  If gintPrivBelegArt = 0 Then
+    Frame1(2).Caption = "Rechnung"
+    cmd1(5).Caption = "Rechnung"
+    mnuBearb1(5).Caption = "Rechnung"
+  Else
+    Frame1(2).Caption = "Gutschrift"
+    cmd1(5).Caption = "Gutschrift"
+    mnuBearb1(5).Caption = "Gutschrift"
+  End If
+  Me.Caption = Me.Caption & " - " & Frame1(2).Caption
+  Me.left = GetSetting("SP50000", "SP52800", "SP52830Left", "2550")
+  Me.top = GetSetting("SP50000", "SP52800", "SP52830Top", "870")
+  
+  Me.Width = FORM_WIDTH 'Const in SP5000B.bas
+  Me.Height = FORM_HEIGHT
+  
+  If left(Me.Name, 3) = "frm" Then
+    sta1.Panels(1).Text = Mid(Me.Name, 4)
+  Else
+    sta1.Panels(1).Text = Me.Name
+  End If
+  
+  sta1.Panels(2).Text = DisplayVerInfo(GsHauptPfad & "exe\" & Gc_strExeFile)
+  
+
+  Set objDAusw = New SPDAOAusw.clsDAOAuswahl
+  objDAusw.DatabaseName = GsHauptPfad & "dat\" & CStr(CInt(GsAnwenderNr)) & "\SP50000.dat"
+  objDAusw.FilterBar = True
+  
+  Set objDAuswDef = New SPDAOAusw.clsDAOAuswahl
+  objDAuswDef.DatabaseName = GsHauptPfad & "exe\Sp50000.def"
+  
+  Set objDAOSeek = New SPDAOSeek.clsDAOSeek
+  objDAOSeek.DatabaseName = GsHauptPfad & "fix\SP50000.fix"
+  
+  Set objHlp = New SpHlp.clsHlp
+  objHlp.DatabaseName = GsHauptPfad & "hlp\SP50000.hlp"
+  objHlp.Table = Me.Name
+  objHlp.Caption = Me.Name & " - Feldhilfe"
+  
+  ComboLaden
+  MaskeLeeren
+  EWerkErmitteln
+
+  SaveSetting "SP50000", "SP52800", "SP52830", Me.Caption
+  mnuOpt1(0).Checked = GetSetting("SP50000", "SP52800", "SP52830DruckerDialog", "-1")
+  mnuOpt1(1).Checked = GetSetting("SP50000", "SP52800", "SP52830BelegNr", "0")
+  txt1(15).Visible = mnuOpt1(1).Checked
+  txt1(16).Visible = mnuOpt1(1).Checked
+  lbl1(15).Visible = mnuOpt1(1).Checked
+  lbl1(16).Visible = mnuOpt1(1).Checked
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Form_Load")
+ '***Ende
+End Sub
+
+Public Sub EWerkErmitteln()
+  Dim rs As DAO.Recordset
+
+  
+  Set rs = GDB.OpenRecordset("SELECT Ewerk FROM [1200_GrundKonditionen] WHERE MCode = """ & txt1(0) & """ ", dbOpenDynaset)
+  If rs.RecordCount = 0 Then
+    Set rs = GDB.OpenRecordset("SELECT Ewerk FROM [1200_GrundKonditionen] WHERE MCode = '@System' ", dbOpenDynaset)
+    'Set rs = GDB.OpenRecordset("SELECT Ewerk FROM [1100_SystemParameter]", dbOpenDynaset)
+  End If
+  
+  cmdAuswahl(5).Visible = True
+  cmdAuswahl(6).Visible = True
+  cmdAuswahl(9).Visible = True
+  cmdAuswahl(10).Visible = True
+  cmdAuswahl(11).Visible = True
+  
+  
+  Select Case rs!Ewerk
+  Case "0"
+    gstrEWerk = "" '0=ohne
+    cmdAuswahl(5).Visible = False
+    cmdAuswahl(6).Visible = False
+    cmdAuswahl(9).Visible = False
+    cmdAuswahl(10).Visible = False
+    cmdAuswahl(11).Visible = False
+  Case "1"
+    gstrEWerk = "GftOrt"
+  Case "2"
+    gstrEWerk = "BzgD"
+  Case "3"
+    gstrEWerk = "BzgEu"
+  End Select
+
+End Sub
+
+Private Sub Form_Resize()
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  sta1.Panels(1).Width = Me.Width / FORM_WIDTH * FORM_PANELS_1
+  sta1.Panels(2).Width = Me.Width / FORM_WIDTH * FORM_PANELS_2
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Form_Resize")
+        '***Ende
+End Sub
+
+
+Private Sub Form_Unload(Cancel As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  SaveSetting "SP50000", "SP52800", "SP52830Left", Me.left
+  SaveSetting "SP50000", "SP52800", "SP52830Top", Me.top
+  'Unterrutine in SP50000B.bas
+  If gintPrivBelegArt = 0 Then
+    Call ProgrammAus("283")
+  Else
+    Call ProgrammAus("284")
+  End If
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Form_Unload")
+ '***Ende
+End Sub
+
+Public Function Speichern(Optional BelegID As Long, Optional tmp As Boolean, Optional Druck As Boolean) As Boolean
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  'BelegID wird mitgegeben beim Aktualisieren der Rechnung.
+  'Sonst wird BelegID ermittelt und neue Rechnungssätze werden hinzugefügt.
+  'Tmp = True -> Die Daten der Rechnung werden in die Tmp-Tabellen gespeichert
+  'um die Vorschau der noch nicht gespeicherten Rechnung zu ermöglichen.
+  Dim rs As DAO.Recordset
+  Dim rsHaupt As DAO.Recordset
+  Dim TmpZusatz As String
+  Dim RechnNr As Long
+  
+  If Not tmp Then
+    If IsNumeric(txt1(15)) Then
+      If CLng(txt1(15)) = 0 Then
+        txt1(15) = ""
+      Else
+        If Not IstBelegNrFrei(txt1(15), glngBelegID, gintPrivBelegArt) Then
+          MsgBox "Die vorgeschlagene Beleg-Nummer ''" & txt1(15) & "'' wurde bereits vergeben. Die Beleg-Nummer wird automatisch beim Drucken ermittelt.", vbInformation
+          txt1(15) = ""
+        End If
+      End If
+    End If
+  End If
+  
+  GWS.BeginTrans
+  
+  If tmp Then
+    TmpZusatz = "Tmp"
+    GDB.Execute "DELETE FROM [2800_HauptTmp] WHERE [BelegID] = " & BelegID, dbFailOnError
+  End If
+  
+  Set rsHaupt = GDB.OpenRecordset("SELECT * FROM [2800_Haupt" & TmpZusatz & "] WHERE BelegID = " & BelegID, dbOpenDynaset)
+  
+  If BelegID = 0 Then
+    If tmp = False Then
+      Set rs = GDB.OpenRecordset("SELECT BelegID FROM [2800_Abfr_MaxBelegID]", dbOpenSnapshot)
+      If IsNull(rs!BelegID) Then
+        BelegID = 1
+      Else
+        BelegID = rs!BelegID + 1
+      End If
+      glngBelegID = BelegID
+      sta1.Panels(3).Text = "Erfassungs-Nr.: " & glngBelegID
+    End If
+    rsHaupt.AddNew
+    rsHaupt!BelegID = BelegID
+    rsHaupt.Update ' Sofort Updaten um mehrfache Vergabe der BelegID zu vermeiden
+    
+    rsHaupt.bookmark = rsHaupt.LastModified
+    rsHaupt.Edit
+    rsHaupt!ErstDat = Now
+    rsHaupt!ErstVon = GsUser
+    rsHaupt!AendDat = Now
+    rsHaupt!AendVon = GsUser
+  Else
+    If tmp Then
+      rsHaupt.AddNew
+      rsHaupt!BelegID = BelegID
+      rsHaupt!ErstDat = Now
+      rsHaupt!ErstVon = GsUser
+    Else
+      rsHaupt.Edit
+    End If
+    rsHaupt!AendDat = Now
+    rsHaupt!AendVon = GsUser
+  End If
+  
+  rsHaupt!MCode = txt1(0)
+  rsHaupt!Name1 = txt1(1)
+  rsHaupt!Name2 = txt1(2)
+  rsHaupt!AnsprPartner = txt1(3)
+  rsHaupt!Postfach = txt1(4)
+  rsHaupt!Plz1 = txt1(5)
+  rsHaupt!ort1 = txt1(6)
+  rsHaupt!Straße = txt1(7)
+  rsHaupt!Lkz = txt1(8)
+  rsHaupt!plz = txt1(9)
+  rsHaupt!ort = txt1(10)
+  rsHaupt!Ortsteil = txt1(11)
+  rsHaupt!KtoNr = txt1(12)
+  rsHaupt!KtoKnz = txt1(34)
+  rsHaupt!SteuerNr = txt1(13)
+  rsHaupt!UID = txt1(14)
+  rsHaupt!USt = Combo1(0).ListIndex
+  rsHaupt!ZwAblage = Check1(0).Value
+  
+  If IsDate(txt1(16)) Then rsHaupt!BelegDatum = txt1(16) 'Manuelle Erfassung
+  If Druck And rsHaupt!ZwAblage = 0 Then 'Zwischenablage-Belege bekommen keine automatische Belegnummer und Druckstatus bleibt = 0.
+    rsHaupt!Druck = 1
+    If IsNumeric(txt1(15)) Then
+      rsHaupt!BelegNr = txt1(15)
+    Else
+      If rsHaupt!BelegNr = 0 Then
+        'Neue Rechnung/Gutschrift
+        
+        Do
+          RechnNr = NummernKreis(NummernKreisWaehlen(gintPrivBelegArt + 8))  'Prüfen, ob allgemainer Nummernkreis für Rechnungen benutzt werden soll.
+          If RechnNr = -1 Then
+            'Fehler beim Ziehen der Rechnungsnummer.
+            Call MsgText(1, 338, 0, 0, 0)
+            'Der Nummernkreis ist von einem anderen Benutzer kurzzeitig gesperrt. Bitte versuchen Sie den Vorgang nochmals auszuführen.
+            MsgBox GsMsgText(0), vbInformation
+            GWS.Rollback
+            Exit Function
+          End If
+          'Wenn die ermittelte RechnNr bereits existiert, neue RechnNr ermitteln.
+        Loop Until IstBelegNrFrei(RechnNr, glngBelegID, gintPrivBelegArt)
+        
+        rsHaupt!BelegNr = RechnNr
+        If txt1(15).Visible Then
+          txt1(15) = RechnNr
+        End If
+        
+      End If
+    End If
+    If Not IsDate(rsHaupt!BelegDatum) Then rsHaupt!BelegDatum = GdtDatum
+    
+  Else
+    If IsNumeric(txt1(15)) Then rsHaupt!BelegNr = txt1(15) 'Manuelle Erfassung
+  End If
+  
+  rsHaupt!Art = gintPrivBelegArt
+  rsHaupt!Wrg1 = txt1(17)
+  rsHaupt!Wrg2 = txt1(18)
+  rsHaupt!WrgAusw = Check1(1).Value
+  rsHaupt!Kurs = txt1(19)
+  rsHaupt!MwSt = txt1(20)
+  rsHaupt!ZSkto = txt1(21)
+  rsHaupt!ZSktoTage = txt1(22)
+  rsHaupt!ZTage = txt1(23)
+  rsHaupt!PPRechnung = txt1(24)
+  
+  rsHaupt!KostSchl = txt1(25)
+  rsHaupt!FibuSchl = txt1(26)
+  If IsNumeric(txt1(27)) Then rsHaupt!KostKonto = txt1(27)
+  If IsNumeric(txt1(28)) Then rsHaupt!FiBuKonto = txt1(28)
+  
+  If IsDate(txt1(29)) Then
+    rsHaupt!Datum = txt1(29)
+  Else
+    rsHaupt!Datum = Null
+  End If
+  rsHaupt!AbfZus = txt1(30)
+  If IsNumeric(txt1(31)) Then rsHaupt!AbfPos = txt1(31)
+  rsHaupt!KfzSchl = txt1(33)
+  If IsNumeric(txt1(32)) Then rsHaupt!Relation = txt1(32)
+  If Trim(txt1(35)) <> "<alle>" Then rsHaupt!ErfNr = txt1(35)
+  
+  If gintPrivBelegArt = 0 Then
+    frmRechnungErf.FolgeSpeichern BelegID, tmp
+  Else
+    frmGutschriftErf.FolgeSpeichern BelegID, tmp
+  End If
+  
+  'Die 2800_Haupt muss gesperrt bleiben bis die 2800_Folge upgedatet ist.
+  'So wird verhindert, dass ein anderer Benutzer die Tabelle in der Zwischenzeit verändert.
+  gintDruck = rsHaupt!Druck
+  rsHaupt.Update
+  rsHaupt.bookmark = rsHaupt.LastModified
+  
+  If gintDruck = 1 And rsHaupt!ZwAblage = 0 And Not tmp Then SpeditionsBuch BelegID, gintPrivBelegArt
+  
+  GWS.CommitTrans
+  Speichern = True
+  
+        '***Beginn
+        Exit Function
+Fehler:
+        GWS.Rollback
+        Call FehlerErklärung("frmSP52830", "Speichern")
+        '***Ende
+End Function
+
+Private Sub mnuBearb1_Click(Index As Integer)
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  
+  Call cmd1_Click(Index)
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "mnuBearb1_Click")
+        '***Ende
+End Sub
+
+Private Sub mnuDat1_Click(Index As Integer)
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Select Case Index
+  Case 6 'Schließen
+    Call cmd1_Click(6)
+  End Select
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "mnuDat1_Click")
+        '***Ende
+End Sub
+
+
+
+
+
+
+Private Sub mnuOpt1_Click(Index As Integer)
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  mnuOpt1(Index).Checked = Not mnuOpt1(Index).Checked
+  Select Case Index
+  Case 0 'Druckerauswahl
+    SaveSetting "SP50000", "SP52800", "SP52830DruckerDialog", CInt(mnuOpt1(Index).Checked)
+  Case 1 'Automatische Beleg-Nr. Vergabe
+    SaveSetting "SP50000", "SP52800", "SP52830BelegNr", CInt(mnuOpt1(Index).Checked)
+    txt1(15).Visible = mnuOpt1(Index).Checked
+    txt1(15) = ""
+    txt1(16).Visible = mnuOpt1(Index).Checked
+    txt1(16) = ""
+    lbl1(15).Visible = mnuOpt1(Index).Checked
+    lbl1(16).Visible = mnuOpt1(Index).Checked
+  End Select
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "mnuOpt1_Click")
+        '***Ende
+End Sub
+
+Private Sub mnuSuch_Click(Index As Integer)
+  BelegSuchen Index
+End Sub
+
+Private Sub txt1_GotFocus(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  If Index <> 18 Then 'Mandantenwährung (gesperrt für die Eingabe)
+    txt1(Index).SelStart = 0
+    txt1(Index).SelLength = Len(txt1(Index))
+    txt1(Index).ForeColor = vbWindowText
+    txt1(Index).BackColor = &HC0E0FF  'hellorange
+    objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+    'txt1(Index).MaxLength = objPRM.EingabeLaenge(txt1(Index))
+  End If
+
+'*************Alt
+  gvntMerker = txt1(Index)
+  
+  
+    
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "txt1_GotFocus")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_KeyDown(Index As Integer, KeyCode As Integer, Shift As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  
+  Select Case KeyCode
+  Case vbKeyF1
+    If Shift = 1 Then
+      'Die UMSCHALT-TASTE ist gedrückt.
+      'Hilfetexte können erfast oder bearbeitet werden.
+      objHlp.HlpShow HlpWrite, objPRM.HlpID
+    Else
+      objHlp.HlpShow HlpRead, objPRM.HlpID
+    End If
+  Case vbKeyF2
+    Select Case Index
+    Case 0, 3, 5, 6, 9, 10, 11, 17, 18, 25, 26, 29, 30, 31, 34, 35
+      Call cmdAuswahl_Click(Index)
+    End Select
+  Case vbKeyReturn, vbKeyDown
+    Select Case Index
+    Case 0 'MCode
+      If Trim(txt1(Index)) <> "" Then
+        objDAusw.GetIfOnesHit = True
+        Call cmdAuswahl_Click(Index)
+        objDAusw.GetIfOnesHit = False
+      Else
+        Call objPRM.SprungNeu("Vorwärts", Shift, txt1(Index).TabIndex, True)
+      End If
+      EWerkErmitteln
+    Case Else
+      objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+      'Weil objPRM.SprungNeu Validate-Ereignis nicht auslöst,
+      'muss die Umwandlung und Prüfung an der Stelle stattfinden.
+      If Index = 29 Then 'Abfertigungs-Datum
+        txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+      Else
+        txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index), , True, True)
+      End If
+      If objPRM.EingabeFehler(txt1(Index)) = False Then
+        Call objPRM.SprungNeu("Vorwärts", Shift, txt1(Index).TabIndex, True)
+      End If
+    End Select
+  Case vbKeyEscape, vbKeyUp
+    objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+    txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+    If objPRM.EingabeFehler(txt1(Index)) = False Then
+      Call objPRM.SprungNeu("Rückwerts", Shift, txt1(Index).TabIndex, True)
+    End If
+  Case vbKeyDelete
+    If txt1(Index).SelLength = Len(txt1(Index)) Then
+      Select Case Index
+      Case 29, 30, 31 'Abf-Statistik-Felder
+        txt1(29) = ""
+        txt1(30) = ""
+        txt1(31) = ""
+        txt1(35) = ""
+      Case 35
+        txt1(35) = ""
+      End Select
+    End If
+  End Select
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "txt1_KeyDown")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_KeyPress(Index As Integer, KeyAscii As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Select Case KeyAscii
+  Case vbKeyReturn, vbKeyEscape
+    KeyAscii = 0
+  End Select
+  
+  KeyAscii = objPRM.EingabePrüfung(KeyAscii)
+  
+  If txt1(Index).MaxLength = 0 Then
+    'Prüfen, ob die neue Zeichenfolge, die zugelassene Länge übersteigt. (Numerischen Felder. Sonst gilt die MaxLength-Eigenschaft von clsPRM)
+    Dim NeuText As String
+    If txt1(Index).SelLength = 0 Then NeuText = Mid(txt1(Index), 1, txt1(Index).SelStart) & Chr(KeyAscii) & Mid(txt1(Index), txt1(Index).SelStart + 1)
+    If KeyAscii <> 0 And KeyAscii <> 8 Then
+      If Len(NeuText) > objPRM.EingabeLaenge(NeuText) Then
+        'Die neue Zeichenfolge würde zu lang. Eingabe unterdrücken.
+        Beep
+        KeyAscii = 0
+      End If
+    End If
+  End If
+
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "txt1_KeyPress")
+ '***Ende
+End Sub
+
+
+Private Sub txt1_LostFocus(Index As Integer)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  txt1(Index).ForeColor = vbActiveTitleBar
+  txt1(Index).BackColor = vbWindowBackground  'Fensterhintergrund(weiß)
+        
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "txt1_LostFocus")
+ '***Ende
+End Sub
+
+
+
+
+Public Sub MaskeLeeren()
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim i As Integer
+  
+  gbDataChanged = False
+  
+  For i = 1 To txt1.Count - 1
+    Select Case i
+    'Case 29  'Datumsfeld
+    '  txt1(i) = GdtDatum
+    Case 19, 20, 21, 22, 23, 24 'Nummerischen Felder
+      objPRM.FindFirstString = "name = 'txt1' AND index = " & i
+      txt1(i) = objPRM.EingabeUmwandlung(0)
+    Case Else
+      txt1(i) = ""
+    End Select
+  Next
+  
+  KursFuerRechnung "000"
+  txt1(17) = txt1(18) 'Rechnungswährung
+  
+  Check1(0).Value = 0
+  Check1(1).Value = 0
+  Frames True
+  gintZwAblage = 0
+  gintDruck = 0
+  gbDataChanged = True
+  
+  EWerkErmitteln
+  'mnuBearb1(5).Enabled = False
+  'cmd1(5).Enabled = False
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "MaskeLeeren")
+        '***Ende
+End Sub
+
+Private Sub txt1_Validate(Index As Integer, Cancel As Boolean)
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  
+  If gbDataChanged Then
+    objPRM.FindFirstString = "name = 'txt1' AND index = " & Index
+    If Index = 29 Then 'Abfertigungs-Datum
+      txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index))
+    Else
+      txt1(Index) = objPRM.EingabeUmwandlung(txt1(Index), , True, True)
+      If Index = 0 Then EWerkErmitteln
+    End If
+    If objPRM.EingabeFehler(txt1(Index)) Then
+      Cancel = True
+    End If
+  End If
+  
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "txt1_Validate")
+ '***Ende
+
+End Sub
+
+
+
+Public Sub KundeZeigen()
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim rs As DAO.Recordset
+  Dim SQL As String
+  Dim WrgSchl As String
+  
+  MaskeLeeren
+  
+  SQL = "SELECT MCode,Name1,Name2,Postfach,Plz1,Ort1,Straße,Lkz,Plz,Ort,Ortsteil,KtoNr,KtoKnz,SteuerNr,UID FROM [1200_AllgDaten] WHERE MCode='" & txt1(0) & "'"
+  Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+  If rs.RecordCount > 0 Then
+    txt1(1) = "" & rs!Name1
+    txt1(2) = "" & rs!Name2
+    txt1(4) = "" & rs!Postfach
+    txt1(5) = "" & rs!Plz1
+    txt1(6) = "" & rs!ort1
+    txt1(7) = "" & rs!Straße
+    txt1(8) = "" & rs!Lkz
+    txt1(9) = "" & rs!plz
+    txt1(10) = "" & rs!ort
+    txt1(11) = "" & rs!Ortsteil
+    txt1(12) = "" & rs!KtoNr
+    txt1(34) = "" & rs!KtoKnz
+    txt1(13) = "" & rs!SteuerNr
+    txt1(14) = "" & rs!UID
+  End If
+  rs.Close
+  Set rs = Nothing
+  
+  'Zahlungskonditionen
+  SQL = "SELECT Lkz,Ust,ZSkto,ZSktoTage,Ztage,PPRechnung FROM [1200_GrundKonditionen] WHERE MCode='" & txt1(0) & "'"
+  Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+  If rs.RecordCount > 0 Then
+    objPRM.FindFirstString = "name = 'txt1' AND index = 21"
+    txt1(21) = objPRM.EingabeUmwandlung(rs!ZSkto)
+    objPRM.FindFirstString = "name = 'txt1' AND index = 22"
+    txt1(22) = objPRM.EingabeUmwandlung(rs!ZSktoTage)
+    objPRM.FindFirstString = "name = 'txt1' AND index = 23"
+    txt1(23) = objPRM.EingabeUmwandlung(rs!ZTage)
+    objPRM.FindFirstString = "name = 'txt1' AND index = 24"
+    txt1(24) = objPRM.EingabeUmwandlung(rs!PPRechnung)
+    Combo1(0).ListIndex = rs!USt
+    WrgSchl = rs!Lkz
+  End If
+  rs.Close
+  Set rs = Nothing
+  
+  KursFuerRechnung WrgSchl
+  
+  SQL = "SELECT Anrede,Name1,Name2 FROM [1200_AnsprPartner] WHERE MCode='" & txt1(0) & "' ORDER BY Standard"
+  Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+  If rs.RecordCount > 0 Then
+    txt1(3) = rs!Anrede & " " & rs!Name1 & " " & rs!Name2
+  Else
+    txt1(3) = ""
+  End If
+  
+  'txt1(16) = GdtDatum
+  txt1(29) = "" 'GdtDatum
+  
+  EWerkErmitteln
+  
+  'cmd1(5).Enabled = True
+  'mnuBearb1(5).Enabled = True
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "KundeZeigen")
+        '***Ende
+End Sub
+
+Public Sub BelegKopfZeigen(BelegID As Long)
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim rs As DAO.Recordset
+  Dim SQL As String
+  
+  MaskeLeeren
+  txt1(0) = ""
+  
+  SQL = "SELECT * FROM [2800_Haupt] WHERE BelegID = " & BelegID
+  Set rs = GDB.OpenRecordset(SQL, dbOpenDynaset)
+  If rs.RecordCount > 0 Then
+    txt1(0) = "" & rs!MCode
+    txt1(1) = "" & rs!Name1
+    txt1(2) = "" & rs!Name2
+    txt1(3) = "" & rs!AnsprPartner
+    txt1(4) = "" & rs!Postfach
+    txt1(5) = "" & rs!Plz1
+    txt1(6) = "" & rs!ort1
+    txt1(7) = "" & rs!Straße
+    txt1(8) = "" & rs!Lkz
+    txt1(9) = "" & rs!plz
+    txt1(10) = "" & rs!ort
+    txt1(11) = "" & rs!Ortsteil
+    txt1(12) = "" & rs!KtoNr
+    txt1(34) = "" & rs!KtoKnz
+    txt1(13) = "" & rs!SteuerNr
+    txt1(14) = "" & rs!UID
+    Combo1(0).ListIndex = rs!USt
+    Check1(0).Value = 0 'rs!ZwAblage
+    gintZwAblage = rs!ZwAblage
+    If rs!ZwAblage = 0 Then
+      txt1(15) = "" & rs!BelegNr
+      txt1(16) = "" & rs!BelegDatum
+    Else
+      txt1(15) = ""
+      txt1(16) = ""
+    End If
+    txt1(17) = "" & rs!Wrg1
+    txt1(18) = "" & rs!Wrg2
+    Check1(1).Value = rs!WrgAusw
+    txt1(19) = "" & rs!Kurs
+    txt1(20) = "" & rs!MwSt
+    txt1(21) = "" & rs!ZSkto
+    txt1(22) = "" & rs!ZSktoTage
+    txt1(23) = "" & rs!ZTage
+    txt1(24) = "" & rs!PPRechnung
+    txt1(25) = "" & rs!KostSchl
+    txt1(26) = "" & rs!FibuSchl
+    txt1(27) = "" & rs!KostKonto
+    txt1(28) = "" & rs!FiBuKonto
+    txt1(29) = "" & rs!Datum
+    txt1(30) = "" & rs!AbfZus
+    txt1(31) = "" & rs!AbfPos
+    txt1(35) = "" & rs!ErfNr
+    txt1(32) = "" & rs!Relation
+    txt1(33) = "" & rs!KfzSchl
+    glngBelegID = BelegID
+    gintDruck = rs!Druck
+    sta1.Panels(3).Text = "Erfassungs-Nr.: " & glngBelegID
+  End If
+  rs.Close
+  Set rs = Nothing
+  
+  EWerkErmitteln
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "BelegKopfZeigen")
+        '***Ende
+End Sub
+
+
+Public Sub ComboLaden()
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim db As DAO.Database
+  Dim rs As DAO.Recordset
+  
+  Set db = DBEngine.OpenDatabase(GsHauptPfad & "exe\SP50000.def")
+  Set rs = db.OpenRecordset("SELECT KnzBez1 FROM Auswahl WHERE TabName = '1200_GrundKonditionen' AND FeldName = 'Ust' ORDER BY Knz", dbOpenDynaset)
+  If rs.RecordCount > 0 Then
+    Do Until rs.EOF
+      Combo1(0).AddItem rs!KnzBez1
+      rs.MoveNext
+    Loop
+    Combo1(0).ListIndex = 0
+  End If
+  rs.Close
+  db.Close
+  
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "ComboLaden")
+        '***Ende
+End Sub
+
+Public Sub KursFuerRechnung(ByVal WrgSchl As String, Optional ByVal KunenISO As String, Optional ByVal MandantenISO As String)
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim RsWrg As DAO.Recordset
+  Dim SQL As String
+  Dim Kurs As Double
+  
+  Kurs = 1
+  
+  'Kunden Währung
+  SQL = "SELECT Schl,Kurs,MwSt,ISO FROM [1100_Währungen]"
+  Set RsWrg = GDB.OpenRecordset(SQL, dbOpenDynaset)
+  If RsWrg.RecordCount > 0 Then
+    If KunenISO <> "" Then
+      RsWrg.FindFirst "ISO='" & KunenISO & "'"
+    Else
+      RsWrg.FindFirst "Schl='" & WrgSchl & "'"
+    End If
+    If Not RsWrg.NoMatch Then
+      txt1(17) = RsWrg!ISO
+      If RsWrg!Kurs <> 0 Then
+        Kurs = RsWrg!Kurs
+      End If
+    Else
+      txt1(17) = ""
+    End If
+  End If
+  
+  'Mandanten Währung
+  If MandantenISO <> "" Then
+    If RsWrg.RecordCount > 0 Then
+      RsWrg.FindFirst "ISO='" & MandantenISO & "'"
+      If Not RsWrg.NoMatch Then
+        If RsWrg!Kurs <> 0 Then
+          objPRM.FindFirstString = "name = 'txt1' AND index = 19"
+          txt1(19) = objPRM.EingabeUmwandlung(CStr(Runden(RsWrg!Kurs / Kurs, 6)))
+        End If
+      End If
+    End If
+  Else
+    If GmandantRS.RecordCount > 0 Then
+      If RsWrg.RecordCount > 0 Then
+        RsWrg.MoveFirst
+        RsWrg.FindFirst "Schl='" & GmandantRS!EigenWrg & "'"
+        If Not RsWrg.NoMatch Then
+          If txt1(17) = RsWrg!ISO Then
+            'Mandanten- und Kunden-Währung sind gleich.
+            'txt1(18) = ""
+            objPRM.FindFirstString = "name = 'txt1' AND index = 19"
+            txt1(19) = objPRM.EingabeUmwandlung("1")
+            'objPRM.FindFirstString = "name = 'txt1' AND index = 20"
+            'txt1(20) = objPRM.EingabeUmwandlung(RsWrg!MwSt)
+          Else
+            objPRM.FindFirstString = "name = 'txt1' AND index = 19"
+            'Hauptwährung hat immer die Basis = 1. Deshalb wird der Kurs = MandantenKurs/RechnungsKurs
+            txt1(19) = objPRM.EingabeUmwandlung(CStr(Runden(RsWrg!Kurs / Kurs, 6)))
+          End If
+          
+          txt1(18) = RsWrg!ISO
+          objPRM.FindFirstString = "name = 'txt1' AND index = 20"
+          txt1(20) = objPRM.EingabeUmwandlung(RsWrg!MwSt)
+        Else
+          txt1(18) = ""
+          objPRM.FindFirstString = "name = 'txt1' AND index = 19"
+          txt1(19) = objPRM.EingabeUmwandlung("0")
+          objPRM.FindFirstString = "name = 'txt1' AND index = 20"
+          txt1(20) = objPRM.EingabeUmwandlung("0")
+        End If
+      End If
+    
+    Else
+      txt1(18) = ""
+      objPRM.FindFirstString = "name = 'txt1' AND index = 19"
+      txt1(19) = objPRM.EingabeUmwandlung("0")
+      objPRM.FindFirstString = "name = 'txt1' AND index = 20"
+      txt1(20) = objPRM.EingabeUmwandlung("0")
+    End If
+  End If
+
+        '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "KursFuerRechnung")
+        '***Ende
+End Sub
+
+Public Function Plausi() As Integer
+        '***Beginn
+On Error GoTo Fehler
+        '***Ende
+  Dim i As Integer
+  
+  Plausi = 999
+  
+  gbDataChanged = False
+  
+  For i = 0 To txt1.Count - 1
+    If txt1(i).Visible Then 'Beleg -Nr und -Datum werden nur erfasst, wenn manuelle Erfassung eingestellt ist.
+      If Trim(txt1(i)) = "" Then
+        objPRM.FindFirstString = "name = 'txt1' AND index = " & i
+        If objPRM.EingabePflicht Then
+          Plausi = i
+          Exit For
+        End If
+      End If
+    End If
+  Next
+  
+  gbDataChanged = True
+  
+        '***Beginn
+        Exit Function
+Fehler:
+        Call FehlerErklärung("frmSP52830", "Plausi")
+        '***Ende
+
+End Function
+
+
+Public Sub BelegSuchen(Druck As Integer)
+  'Druck = 0 -> Ungedruckten
+  'Druck = 1 -> Gedruckten
+  'Druck = 2 -> Vorlagen
+ '***Beginn
+On Error GoTo Fehler
+ '***Ende
+  Dim i As Integer
+  Dim ColLeft As Integer
+  Dim RowTop As Integer
+  Dim OT As String
+  
+  '*****
+  Dim rc As rect
+
+  Call GetWindowRect(Frame1(0).hwnd, rc)
+  ColLeft = rc.left * Screen.TwipsPerPixelX - 70
+  RowTop = rc.top * Screen.TwipsPerPixelY - 340
+  '*****
+  objDAusw.FilterBar = True
+  objDAusw.BorderStyle = 4
+  objDAusw.Caption = cmd1(5).Caption & "-Suche"
+  objDAusw.top = RowTop
+  objDAusw.left = ColLeft
+  objDAusw.MaxWidth = 9420
+'  objDAusw.ColParameter 0, ColWidth, txt1(Index).Width
+  objDAusw.ColParameter 0, ColWidth, 800
+  objDAusw.ColParameter 1, ColWidth, 800
+  objDAusw.ColParameter 2, ColWidth, 1000
+  objDAusw.ColParameter 3, ColWidth, 1000
+  objDAusw.ColParameter 4, ColWidth, 1300
+  objDAusw.ColParameter 5, ColWidth, 1300
+  objDAusw.ColParameter 6, ColWidth, 400
+  
+  If Druck = 2 Then
+    objDAusw.RSOpen "SELECT BelegID,BelegNr,BelegDatum,MCode,Name1,Name2,Lkz,Plz,Ort FROM [2800_Haupt] WHERE ZwAblage = 1 AND Art = " & gintPrivBelegArt & " AND Storno = '0' ORDER BY Name1"
+  Else
+    objDAusw.RSOpen "SELECT BelegID,BelegNr,BelegDatum,MCode,Name1,Name2,Lkz,Plz,Ort FROM [2800_Haupt] WHERE ZwAblage = 0 AND Druck = " & Druck & " AND Art = " & gintPrivBelegArt & " AND Storno = '0' ORDER BY Name1"
+  End If
+  
+  If objDAusw.Abbruch = False Then
+    BelegKopfZeigen CLng(objDAusw.FieldText(0))
+    If Druck = 1 Then Frames False
+  End If
+  
+  cmd1(5).SetFocus
+       
+ '***Beginn
+        Exit Sub
+Fehler:
+        Call FehlerErklärung("frmSP52830", "BelegSuchen")
+ '***Ende
+
+End Sub
+
+Public Sub Frames(Enabled As Boolean)
+  Frame1(0).Enabled = Enabled
+  Frame1(1).Enabled = Enabled
+  Frame1(2).Enabled = Enabled
+  Frame1(3).Enabled = Enabled
+End Sub
